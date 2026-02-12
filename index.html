@@ -41,8 +41,8 @@
             theme: {
                 extend: {
                     colors: {
-                        obsidian: '#050b14',
-                        deepBlue: '#1e3a8a',
+                        obsidian: '#0d0209',
+                        deepBlue: '#9c005d',
                         techBlue: '#bda16c',
                         prestigeGold: '#bda16c',
                         nobleGold: '#bda16c',
@@ -65,12 +65,12 @@
     <style>
         /* Custom Scrollbar */
         ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050b14; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-track { background: #0d0209; }
+        ::-webkit-scrollbar-thumb { background: #55334a; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #bda16c; }
 
         body {
-            background: radial-gradient(circle at center, #1e3a8a 0%, #0a1528 50%, #050b14 100%);
+            background: radial-gradient(circle at center, #9c005d 0%, #1a0512 50%, #0d0209 100%);
             min-height: 100vh;
             color: #f8fafc;
             overflow-x: hidden;
@@ -79,7 +79,7 @@
 
         /* Glassmorphism Card Style */
         .glass-card {
-            background: rgba(10, 30, 61, 0.4);
+            background: rgba(40, 5, 25, 0.4);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -93,7 +93,7 @@
         .glass-card-hover:hover {
             border-color: rgba(189, 161, 108, 0.8);
             border-width: 3px;
-            background: rgba(10, 30, 61, 0.7);
+            background: rgba(40, 5, 25, 0.7);
             transform: translateY(-14px);
             box-shadow: 0 20px 60px rgba(189, 161, 108, 0.3), 0 0 40px rgba(189, 161, 108, 0.15);
         }
@@ -139,7 +139,7 @@
             z-index: 40;
             writing-mode: vertical-rl;
             text-orientation: mixed;
-            background: rgba(10, 30, 61, 0.7);
+            background: rgba(40, 5, 25, 0.7);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(189, 161, 108, 0.3);
@@ -160,7 +160,7 @@
 
         .floating-cta:hover {
             opacity: 1;
-            background: rgba(10, 30, 61, 0.9);
+            background: rgba(40, 5, 25, 0.9);
             border-color: rgba(189, 161, 108, 0.6);
             padding-right: 14px;
             box-shadow: -4px 0 20px rgba(189, 161, 108, 0.2);
@@ -235,7 +235,7 @@
         <canvas id="hero-dots-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
 
         <!-- Gradient Overlay -->
-        <div class="absolute inset-0 z-[1]" style="background: radial-gradient(circle at center, rgba(30, 58, 138, 0.3) 0%, rgba(30, 58, 138, 0.6) 50%, rgba(5, 11, 20, 0.9) 100%);"></div>
+        <div class="absolute inset-0 z-[1]" style="background: radial-gradient(circle at center, rgba(156, 0, 93, 0.3) 0%, rgba(156, 0, 93, 0.6) 50%, rgba(13, 2, 9, 0.9) 100%);"></div>
 
         <div class="relative z-10 w-full px-4 sm:px-6 lg:px-8 text-center">
 
@@ -394,7 +394,7 @@
             <!-- Feature Flow: stacked rows with middle 3 side-by-side -->
             <div class="flex flex-col gap-4 fade-up max-w-4xl mx-auto">
                 <!-- Row 1: Full-width -->
-                <div class="glass-card rounded-lg p-6 text-center" style="background: rgba(30, 80, 60, 0.5); border-color: rgba(80, 180, 120, 0.3);">
+                <div class="glass-card rounded-lg p-6 text-center" style="background: rgba(80, 10, 50, 0.5); border-color: rgba(180, 40, 120, 0.3);">
                     <div class="text-3xl text-prestigeGold mb-3"><i class="fa-solid fa-globe"></i></div>
                     <h4 class="text-white font-bold text-xl mb-2">AI × PM 全局觀</h4>
                     <p class="text-gray-300 text-base">專題演講 / 短講</p>
@@ -418,7 +418,7 @@
                     </div>
                 </div>
                 <!-- Row 3: Full-width -->
-                <div class="glass-card rounded-lg p-6 text-center" style="background: rgba(30, 80, 60, 0.5); border-color: rgba(80, 180, 120, 0.3);">
+                <div class="glass-card rounded-lg p-6 text-center" style="background: rgba(80, 10, 50, 0.5); border-color: rgba(180, 40, 120, 0.3);">
                     <div class="text-3xl text-prestigeGold mb-3"><i class="fa-solid fa-certificate"></i></div>
                     <h4 class="text-white font-bold text-xl mb-2">AIPM 社群互動 / AI 素養認證考試</h4>
                 </div>
