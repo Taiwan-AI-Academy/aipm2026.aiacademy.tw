@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 AI PM 班 | 台灣人工智慧學校</title>
+    <meta name="description" content="台灣人工智慧學校 AI PM 班，透過大量 AI 硬技能實作操練，搭配 Capstone 小組專案與 Demo Day，打造軟硬實力兼具的全方位 AI 產品經理。2026/4/11-5/30 每週六上課。">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="2026 AI PM 班 | 台灣人工智慧學校">
+    <meta property="og:description" content="台灣人工智慧學校 AI PM 班，打造軟硬實力兼具的全方位 AI 產品經理。2026/4/11-5/30 每週六上課。">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="2026 AI PM 班 | 台灣人工智慧學校">
+    <meta property="twitter:description" content="台灣人工智慧學校 AI PM 班，打造軟硬實力兼具的全方位 AI 產品經理。2026/4/11-5/30 每週六上課。">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-B6862W9FBG"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-B6862W9FBG');
+    </script>
+
+    <!-- Google Fonts: Noto Sans TC for content, Playfair Display for prestige numbers -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS (via CDN for single file portability) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        obsidian: '#050b14',
+                        deepBlue: '#1e3a8a',
+                        techBlue: '#bda16c',
+                        prestigeGold: '#bda16c',
+                        nobleGold: '#bda16c',
+                        prestigeGoldHover: '#a8905a',
+                        glass: 'rgba(255, 255, 255, 0.05)',
+                        glassBorder: 'rgba(255, 255, 255, 0.1)',
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans TC"', 'sans-serif'],
+                        serif: ['"Playfair Display"', 'serif'],
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050b14; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #bda16c; }
+
+        body {
+            background: radial-gradient(circle at center, #1e3a8a 0%, #0a1528 50%, #050b14 100%);
+            min-height: 100vh;
+            color: #f8fafc;
+            overflow-x: hidden;
+            background-attachment: fixed;
+        }
+
+        /* Glassmorphism Card Style */
+        .glass-card {
+            background: rgba(10, 30, 61, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-card-hover {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .glass-card-hover:hover {
+            border-color: rgba(189, 161, 108, 0.8);
+            border-width: 3px;
+            background: rgba(10, 30, 61, 0.7);
+            transform: translateY(-14px);
+            box-shadow: 0 20px 60px rgba(189, 161, 108, 0.3), 0 0 40px rgba(189, 161, 108, 0.15);
+        }
+
+        /* Text Gradients */
+        .text-gradient-gold {
+            background: linear-gradient(to right, #bda16c, #d4b88a, #bda16c);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: shine 5s linear infinite;
+        }
+
+        @keyframes shine {
+            to { background-position: 200% center; }
+        }
+
+        /* Animation Utilities */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(189, 161, 108, 0.3), transparent);
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        /* Floating CTA Button */
+        .floating-cta {
+            position: fixed;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 40;
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            background: rgba(10, 30, 61, 0.7);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(189, 161, 108, 0.3);
+            border-right: none;
+            border-radius: 8px 0 0 8px;
+            padding: 20px 12px;
+            color: #bda16c;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0.75;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .floating-cta:hover {
+            opacity: 1;
+            background: rgba(10, 30, 61, 0.9);
+            border-color: rgba(189, 161, 108, 0.6);
+            padding-right: 14px;
+            box-shadow: -4px 0 20px rgba(189, 161, 108, 0.2);
+        }
+
+        .floating-cta:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        @media (max-width: 768px) {
+            .floating-cta { display: none; }
+        }
+
+        /* Week card hover */
+        .week-card {
+            transition: all 0.3s ease;
+        }
+        .week-card:hover {
+            border-color: rgba(189, 161, 108, 0.5);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-prestigeGold selection:text-obsidian">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 glass-card border-b border-white/5" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <img src="assets/AIA-logo-white.svg" alt="台灣人工智慧學校" class="h-14 w-auto">
+                </div>
+                <div class="hidden lg:block">
+                    <div class="ml-10 flex items-baseline space-x-6">
+                        <a href="#about" class="hover:text-prestigeGold transition-colors text-sm xl:text-base tracking-wider uppercase">關於AIPM</a>
+                        <a href="#audience" class="hover:text-prestigeGold transition-colors text-sm xl:text-base tracking-wider uppercase">課程對象</a>
+                        <a href="#features" class="hover:text-prestigeGold transition-colors text-sm xl:text-base tracking-wider uppercase">課程特色</a>
+                        <a href="#benefits" class="hover:text-prestigeGold transition-colors text-sm xl:text-base tracking-wider uppercase">課程效益</a>
+                        <a href="#schedule" class="hover:text-prestigeGold transition-colors text-sm xl:text-base tracking-wider uppercase">課程表</a>
+                        <a href="#register" class="hover:text-prestigeGold transition-colors text-sm xl:text-base tracking-wider uppercase">報名資訊</a>
+                    </div>
+                </div>
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:block">
+                        <a href="#register" class="bg-transparent border border-prestigeGold text-prestigeGold hover:bg-prestigeGold hover:text-obsidian px-6 py-2 rounded-sm text-base font-semibold transition-all duration-300 uppercase tracking-widest">
+                            立即報名
+                        </a>
+                    </div>
+                    <!-- Mobile menu button -->
+                    <button type="button" class="lg:hidden text-gray-400 hover:text-white focus:outline-none" id="mobile-menu-button">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div class="lg:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 glass-card border-t border-white/5">
+                <a href="#about" class="block px-3 py-2 text-base font-medium text-white hover:text-prestigeGold hover:bg-white/5 rounded-md">關於AIPM</a>
+                <a href="#audience" class="block px-3 py-2 text-base font-medium text-white hover:text-prestigeGold hover:bg-white/5 rounded-md">課程對象</a>
+                <a href="#features" class="block px-3 py-2 text-base font-medium text-white hover:text-prestigeGold hover:bg-white/5 rounded-md">課程特色</a>
+                <a href="#benefits" class="block px-3 py-2 text-base font-medium text-white hover:text-prestigeGold hover:bg-white/5 rounded-md">課程效益</a>
+                <a href="#schedule" class="block px-3 py-2 text-base font-medium text-white hover:text-prestigeGold hover:bg-white/5 rounded-md">課程表</a>
+                <a href="#register" class="block px-3 py-2 text-base font-bold text-prestigeGold hover:bg-white/5 rounded-md">報名資訊</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+
+        <!-- Animated Wave Lines Canvas -->
+        <canvas id="hero-dots-canvas" class="absolute inset-0 w-full h-full z-0 pointer-events-none"></canvas>
+
+        <!-- Gradient Overlay -->
+        <div class="absolute inset-0 z-[1]" style="background: radial-gradient(circle at center, rgba(30, 58, 138, 0.3) 0%, rgba(30, 58, 138, 0.6) 50%, rgba(5, 11, 20, 0.9) 100%);"></div>
+
+        <div class="relative z-10 w-full px-4 sm:px-6 lg:px-8 text-center">
+
+            <!-- Logo -->
+            <div class="flex items-center justify-center mb-6 fade-up">
+                <img src="assets/AIA-logo-white.svg" alt="台灣人工智慧學校" class="h-20 md:h-28 w-auto drop-shadow-2xl">
+            </div>
+
+            <!-- Title -->
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-4 fade-up">
+                AI <span class="text-gradient-gold">PM</span> 班
+            </h1>
+
+            <p class="text-xl md:text-2xl text-techBlue font-medium tracking-wider mb-6 fade-up">
+                經理人 AI 產品經理養成班
+            </p>
+
+            <div class="mt-2 max-w-4xl mx-auto fade-up">
+                <p class="text-xl md:text-2xl text-white font-medium tracking-wide text-center mb-2">
+                    打造軟硬實力兼具、可以一擋十的全方位產品經理
+                </p>
+                <div class="w-full border-b-2 border-prestigeGold/50"></div>
+            </div>
+
+            <!-- Organizers -->
+            <div class="mt-8 max-w-4xl mx-auto text-lg md:text-xl text-gray-300 font-light tracking-wide fade-up leading-relaxed">
+                <div class="inline-block text-left">
+                    <div style="display: flex; align-items: baseline; margin-bottom: 0.25rem;">
+                        <span style="white-space: nowrap;">主辦單位：</span>
+                        <div style="flex: 1;">
+                            <span style="white-space: nowrap;">財團法人台灣人工智慧學校基金會</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; align-items: baseline;">
+                        <span style="white-space: nowrap;">協辦單位：</span>
+                        <div style="flex: 1; word-break: normal; line-height: 1.5;">
+                            <span style="display: inline-block;">中央研究院資訊科學研究所、</span>
+                            <span style="display: inline-block;">中央研究院資訊科技創新研究中心</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Date & Venue Card -->
+            <div class="mt-8 flex justify-center fade-up">
+                <div class="glass-card p-6 md:p-8 rounded-lg max-w-4xl w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+                    <div class="text-left w-full md:flex-1 border-b md:border-b-0 md:border-r border-white/10 pb-6 md:pb-0 md:pr-6">
+                        <div class="text-base text-gray-400 uppercase tracking-widest mb-1"><i class="fa-regular fa-calendar mr-2"></i>Date</div>
+                        <div class="text-2xl text-white font-serif">2026.04.11 – 05.30</div>
+                        <div class="text-base text-gray-400 mt-1">每週六 | 共 8 週</div>
+                    </div>
+                    <div class="text-left w-full md:flex-1">
+                        <div class="text-base text-gray-400 uppercase tracking-widest mb-1"><i class="fa-solid fa-location-dot mr-2"></i>Venue</div>
+                        <div class="text-xl text-white">台灣人工智慧學校 台北總校</div>
+                        <div class="text-base text-gray-400 mt-1">新北市板橋區中山路一段141號 14 樓</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 mb-16 pb-8 fade-up relative z-10 cursor-pointer">
+                <a href="#about" class="inline-block">
+                    <i class="fa-solid fa-chevron-down text-prestigeGold/50 animate-bounce text-3xl hover:text-prestigeGold transition-colors duration-300"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About AIPM Section -->
+    <section id="about" class="py-24 relative">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 fade-up">
+                <h2 class="text-prestigeGold text-base font-bold tracking-widest uppercase mb-3">ABOUT</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-white">關於 AIPM</h3>
+                <div class="w-16 h-0.5 bg-prestigeGold mx-auto mt-6"></div>
+            </div>
+
+            <div class="text-center fade-up">
+                <p class="text-2xl md:text-3xl text-techBlue font-medium mb-8">
+                    「當 AI 做的樣品屋已經能實際住人時，<br class="hidden md:inline">PM 與工程師的邊界正在消失」
+                </p>
+
+                <div class="text-gray-300 text-lg md:text-xl leading-relaxed space-y-6 text-left md:text-center max-w-4xl mx-auto">
+                    <p>
+                        在 AI 時代，產品經理 / 專案經理 (PM) 的定義正在被改寫，AI 的大量應用帶來產業逆分工趨勢，產、銷、人、發、財的職能邊界也在急速的消融中，企業組織與工作流程的重構勢不可擋！新時代的經理人透過 AI 的賦能助益，更能將 PM 寶貴的生產力聚焦在回答<strong class="text-white">「做什麼」</strong>與<strong class="text-white">「為什麼」</strong>這兩件無可取代的價值上。
+                    </p>
+                    <p>
+                        台灣人工智慧學校累積八年「經理人週末研修班」的培訓經驗後再度推出<strong class="text-white">經理人 AI PM 班</strong>，除了透過大量的 AI 硬技能實作操練，更透過 Capstone 小組專案與 Demo Day，強化團隊合作、領導力、溝通說服力等軟性技能，打造軟硬實力兼具、可以一擋十的全方位產品經理。
+                    </p>
+                    <p>
+                        課程後學員也將擁有 <strong class="text-white">AIPM 經理人社群</strong>珍貴的人脈存摺，並獲得台灣人工智慧學校 <strong class="text-white">AI 素養級認證考試</strong>資格一次！
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Target Audience Section -->
+    <section id="audience" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <h2 class="text-prestigeGold text-base font-bold tracking-widest uppercase mb-3">TARGET AUDIENCE</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-white">課程對象</h3>
+                <div class="w-16 h-0.5 bg-prestigeGold mx-auto mt-6"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 fade-up">
+                <!-- Card 1: 現職 PM -->
+                <div class="glass-card glass-card-hover rounded-lg p-8 text-center">
+                    <div class="text-6xl text-prestigeGold mb-6">
+                        <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">現職產品經理<br>或具備專案管理經驗人士</h4>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        想學習 AI 技術和最新趨勢，提升產品開發與專案管理中的專業能力。
+                    </p>
+                </div>
+
+                <!-- Card 2: 部門主管 -->
+                <div class="glass-card glass-card-hover rounded-lg p-8 text-center">
+                    <div class="text-6xl text-prestigeGold mb-6">
+                        <i class="fa-solid fa-people-group"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">部門主管與團隊領導者<br>數位轉型推動者</h4>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        負責跨部門協作，想藉 AI 工具優化流程與提升績效、加速變革。
+                    </p>
+                </div>
+
+                <!-- Card 3: 非 PM 背景 -->
+                <div class="glass-card glass-card-hover rounded-lg p-8 text-center">
+                    <div class="text-6xl text-prestigeGold mb-6">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-4">非產品經理背景<br>的職場人士</h4>
+                    <p class="text-gray-400 text-base leading-relaxed">
+                        希望轉型成為產品經理，需要 AI 賦能跨領域專業。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Course Features Section -->
+    <section id="features" class="py-24 bg-gradient-to-b from-transparent to-deepBlue/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <h2 class="text-prestigeGold text-base font-bold tracking-widest uppercase mb-3">FEATURES</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-white">課程特色</h3>
+                <div class="w-16 h-0.5 bg-prestigeGold mx-auto mt-6"></div>
+            </div>
+
+            <!-- Feature Flow: stacked rows with middle 3 side-by-side -->
+            <div class="flex flex-col gap-4 fade-up max-w-4xl mx-auto">
+                <!-- Row 1: Full-width -->
+                <div class="glass-card rounded-lg p-6 text-center" style="background: rgba(30, 80, 60, 0.5); border-color: rgba(80, 180, 120, 0.3);">
+                    <div class="text-3xl text-prestigeGold mb-3"><i class="fa-solid fa-globe"></i></div>
+                    <h4 class="text-white font-bold text-xl mb-2">AI × PM 全局觀</h4>
+                    <p class="text-gray-300 text-base">專題演講 / 短講</p>
+                </div>
+                <!-- Row 2: Three cards side by side -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="glass-card rounded-lg p-6 text-center">
+                        <div class="text-3xl text-prestigeGold mb-3"><i class="fa-solid fa-laptop-code"></i></div>
+                        <h4 class="text-white font-bold text-lg mb-2">Skill</h4>
+                        <p class="text-gray-400 text-sm">AI × PM<br>硬技能實作操練</p>
+                    </div>
+                    <div class="glass-card rounded-lg p-6 text-center">
+                        <div class="text-3xl text-prestigeGold mb-3"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                        <h4 class="text-white font-bold text-lg mb-2">Case Study</h4>
+                        <p class="text-gray-400 text-sm">PM 場景案例分析</p>
+                    </div>
+                    <div class="glass-card rounded-lg p-6 text-center">
+                        <div class="text-3xl text-prestigeGold mb-3"><i class="fa-solid fa-rocket"></i></div>
+                        <h4 class="text-white font-bold text-lg mb-2">Demo Day</h4>
+                        <p class="text-gray-400 text-sm">Capstone 專題發表</p>
+                    </div>
+                </div>
+                <!-- Row 3: Full-width -->
+                <div class="glass-card rounded-lg p-6 text-center" style="background: rgba(30, 80, 60, 0.5); border-color: rgba(80, 180, 120, 0.3);">
+                    <div class="text-3xl text-prestigeGold mb-3"><i class="fa-solid fa-certificate"></i></div>
+                    <h4 class="text-white font-bold text-xl mb-2">AIPM 社群互動 / AI 素養認證考試</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Course Benefits Section -->
+    <section id="benefits" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <h2 class="text-prestigeGold text-base font-bold tracking-widest uppercase mb-3">BENEFITS</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-white">課程效益</h3>
+                <div class="w-16 h-0.5 bg-prestigeGold mx-auto mt-6"></div>
+            </div>
+
+            <div class="space-y-6 max-w-5xl mx-auto">
+
+                <!-- Benefit 1 -->
+                <div class="glass-card p-6 md:p-8 rounded-lg fade-up flex gap-6 items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-prestigeGold/20 rounded-full flex items-center justify-center">
+                        <span class="text-prestigeGold font-bold text-xl">1</span>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2">學會高效 Prompt Engineering</h4>
+                        <p class="text-gray-300 text-base leading-relaxed">運用 Prompt Engineering 生成內容協助撰寫企劃書、簡報內容、市場分析報告，提升溝通說服力。</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 2 -->
+                <div class="glass-card p-6 md:p-8 rounded-lg fade-up flex gap-6 items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-prestigeGold/20 rounded-full flex items-center justify-center">
+                        <span class="text-prestigeGold font-bold text-xl">2</span>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2">運用 RAG 進行個人知識管理</h4>
+                        <p class="text-gray-300 text-base leading-relaxed">運用 RAG 做知識管理分析大量數據，發掘市場趨勢，提供風險預警、資源優化等洞見，幫助決策。</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 3 -->
+                <div class="glass-card p-6 md:p-8 rounded-lg fade-up flex gap-6 items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-prestigeGold/20 rounded-full flex items-center justify-center">
+                        <span class="text-prestigeGold font-bold text-xl">3</span>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2">學會自動化工作流與專案儀表板</h4>
+                        <p class="text-gray-300 text-base leading-relaxed">運用自動化工作流程與 AI 代理省下重複繁瑣低產值的工作時間。確保資訊流暢，即時更新儀表板，實現數據驅動的智慧管理。</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 4 -->
+                <div class="glass-card p-6 md:p-8 rounded-lg fade-up flex gap-6 items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-prestigeGold/20 rounded-full flex items-center justify-center">
+                        <span class="text-prestigeGold font-bold text-xl">4</span>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2">學會 Vibe Coding：用聊天與對話做出產品原型</h4>
+                        <p class="text-gray-300 text-base leading-relaxed">讓非工程背景的 PM 可以由產品概念做出 MVP（Minimum Viable Product），直接跟客戶提案，減少溝通成本與誤差空間。</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 5 -->
+                <div class="glass-card p-6 md:p-8 rounded-lg fade-up flex gap-6 items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-prestigeGold/20 rounded-full flex items-center justify-center">
+                        <span class="text-prestigeGold font-bold text-xl">5</span>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2">Capstone 專案協作與 Demo Day</h4>
+                        <p class="text-gray-300 text-base leading-relaxed">PM 軟性技能的充分運用：團隊合作、時間管理、領導力、溝通表達、問題解決能力。</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 6 -->
+                <div class="glass-card p-6 md:p-8 rounded-lg fade-up flex gap-6 items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-prestigeGold/20 rounded-full flex items-center justify-center">
+                        <span class="text-prestigeGold font-bold text-xl">6</span>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2">AI 素養級認證考試</h4>
+                        <p class="text-gray-300 text-base leading-relaxed">免費獲得認證資格考試一次。台灣人工智慧學校規畫推出的 AI 素養級認證（AIATCL），為台灣職場常見的 AI 證照，在國內具一定公信力。此證照不考寫程式，也不強調工具操作，而是著重 AI 的基本概念、常見應用，以及使用 AI 時該注意的風險與倫理問題。</p>
+                    </div>
+                </div>
+
+                <!-- Benefit 7 -->
+                <div class="glass-card p-6 md:p-8 rounded-lg fade-up flex gap-6 items-start">
+                    <div class="flex-shrink-0 w-12 h-12 bg-prestigeGold/20 rounded-full flex items-center justify-center">
+                        <span class="text-prestigeGold font-bold text-xl">7</span>
+                    </div>
+                    <div>
+                        <h4 class="text-xl font-bold text-white mb-2">AIPM 經理人的珍貴交流人脈社群</h4>
+                        <p class="text-gray-300 text-base leading-relaxed">課後加入 AIPM 經理人社群，與各期學員持續交流產業趨勢、職涯發展與合作機會。</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Course Schedule Section -->
+    <section id="schedule" class="py-24">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-up">
+                <h2 class="text-prestigeGold text-base font-bold tracking-widest uppercase mb-3">CURRICULUM</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-white">課程表</h3>
+                <div class="w-16 h-0.5 bg-prestigeGold mx-auto mt-6"></div>
+            </div>
+
+            <div class="space-y-6">
+
+                <!-- Week 1 -->
+                <div class="glass-card rounded-lg overflow-hidden fade-up week-card">
+                    <div class="bg-gradient-to-r from-prestigeGold/20 to-transparent p-4 md:p-6 flex flex-col md:flex-row md:items-center gap-2 md:gap-6 border-b border-white/10">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-prestigeGold text-obsidian font-bold px-3 py-1 rounded text-sm">第一週</span>
+                            <span class="text-white font-mono text-lg">2026/04/11</span>
+                        </div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <ul class="text-gray-300 text-base space-y-2 list-none">
+                            <li><i class="fa-solid fa-microphone text-prestigeGold mr-2"></i><span class="text-white font-bold">Keynote 專題演講</span></li>
+                            <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>AIPM 概論</li>
+                            <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>GemAI 概論</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Week 2 -->
+                <div class="glass-card rounded-lg overflow-hidden fade-up week-card">
+                    <div class="bg-gradient-to-r from-prestigeGold/20 to-transparent p-4 md:p-6 flex flex-col md:flex-row md:items-center gap-2 md:gap-6 border-b border-white/10">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-prestigeGold text-obsidian font-bold px-3 py-1 rounded text-sm">第二週</span>
+                            <span class="text-white font-mono text-lg">2026/04/18</span>
+                        </div>
+                    </div>
+                    <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
+                            <h4 class="text-white text-lg font-bold">AI 溝通術：用提示指令高效產出多模態企劃內容</h4>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
+                            <h4 class="text-white text-lg font-bold mb-2">產品開發企劃</h4>
+                            <ul class="text-gray-300 text-base space-y-1 list-none">
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>市場與產品規劃全攻略</li>
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>AI 輔助 PRD 與競品分析</li>
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>視覺化專案管理 (Mermaid)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 3 -->
+                <div class="glass-card rounded-lg overflow-hidden fade-up week-card">
+                    <div class="bg-gradient-to-r from-prestigeGold/20 to-transparent p-4 md:p-6 flex flex-col md:flex-row md:items-center gap-2 md:gap-6 border-b border-white/10">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-prestigeGold text-obsidian font-bold px-3 py-1 rounded text-sm">第三週</span>
+                            <span class="text-white font-mono text-lg">2026/04/25</span>
+                        </div>
+                    </div>
+                    <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
+                            <h4 class="text-white text-lg font-bold">個人知識庫的 AI 應用：快速從資料中找到洞察與摘要 (RAG)</h4>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
+                            <h4 class="text-white text-lg font-bold mb-2">範疇 / 時間 / 人力 / 品質控管</h4>
+                            <ul class="text-gray-300 text-base space-y-1 list-none">
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>建立專案專屬 RAG 知識庫</li>
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>自動化合約與文件解析</li>
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>智慧知識管理系統</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 4 -->
+                <div class="glass-card rounded-lg overflow-hidden fade-up week-card">
+                    <div class="bg-gradient-to-r from-prestigeGold/20 to-transparent p-4 md:p-6 flex flex-col md:flex-row md:items-center gap-2 md:gap-6 border-b border-white/10">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-prestigeGold text-obsidian font-bold px-3 py-1 rounded text-sm">第四週</span>
+                            <span class="text-white font-mono text-lg">2026/05/02</span>
+                        </div>
+                    </div>
+                    <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
+                            <h4 class="text-white text-lg font-bold">簡報效率倍增：運用 AI 自動優化日常文件、簡報與影音製作 (Workspace)</h4>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
+                            <h4 class="text-white text-lg font-bold mb-2">成本管理 / 採購管理</h4>
+                            <ul class="text-gray-300 text-base space-y-1 list-none">
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>專案成本與時程視覺化</li>
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>AI 驅動的行銷素材生成</li>
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>整合式專案藍圖繪製</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 5 -->
+                <div class="glass-card rounded-lg overflow-hidden fade-up week-card">
+                    <div class="bg-gradient-to-r from-prestigeGold/20 to-transparent p-4 md:p-6 flex flex-col md:flex-row md:items-center gap-2 md:gap-6 border-b border-white/10">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-prestigeGold text-obsidian font-bold px-3 py-1 rounded text-sm">第五週</span>
+                            <span class="text-white font-mono text-lg">2026/05/09</span>
+                        </div>
+                    </div>
+                    <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
+                            <h4 class="text-white text-lg font-bold">業務流程自動化：透過對話式 AI 輕鬆建立專屬的自動化工作夥伴 (RPA)</h4>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
+                            <h4 class="text-white text-lg font-bold mb-2">溝通管理 / 風險管理</h4>
+                            <ul class="text-gray-300 text-base space-y-1 list-none">
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>從建議到自動執行的 RPA（機器人流程自動化）</li>
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>自動報價與合約生成機制</li>
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>規格轉報價的自動化工作流</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 6 -->
+                <div class="glass-card rounded-lg overflow-hidden fade-up week-card">
+                    <div class="bg-gradient-to-r from-prestigeGold/20 to-transparent p-4 md:p-6 flex flex-col md:flex-row md:items-center gap-2 md:gap-6 border-b border-white/10">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-prestigeGold text-obsidian font-bold px-3 py-1 rounded text-sm">第六週</span>
+                            <span class="text-white font-mono text-lg">2026/05/16</span>
+                        </div>
+                    </div>
+                    <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
+                            <h4 class="text-white text-lg font-bold">Vibe Coding：用說的做原型開發 (Antigravity)</h4>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
+                            <h4 class="text-white text-lg font-bold mb-2">產品架構、高效打造 DEMO</h4>
+                            <ul class="text-gray-300 text-base space-y-1 list-none">
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>Vibe Coding 產品開發全流程</li>
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>零代碼打造 CMS（內容管理系統）後台</li>
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>建立工程協作的共同語言</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 7 -->
+                <div class="glass-card rounded-lg overflow-hidden fade-up week-card">
+                    <div class="bg-gradient-to-r from-prestigeGold/20 to-transparent p-4 md:p-6 flex flex-col md:flex-row md:items-center gap-2 md:gap-6 border-b border-white/10">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-prestigeGold text-obsidian font-bold px-3 py-1 rounded text-sm">第七週</span>
+                            <span class="text-white font-mono text-lg">2026/05/23</span>
+                        </div>
+                    </div>
+                    <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
+                            <h4 class="text-white text-lg font-bold">Vibe Coding：實戰部署 (Firebase Studio)</h4>
+                        </div>
+                        <div>
+                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
+                            <h4 class="text-white text-lg font-bold mb-2">產品介面與整合、快速打造 MVP</h4>
+                            <ul class="text-gray-300 text-base space-y-1 list-none">
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>打造可互動的小組服務 (MVP)</li>
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>完善前端視覺與使用者體驗</li>
+                                <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>產品驗證與 Demo Day 準備</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Week 8 (Highlight) -->
+                <div class="glass-card rounded-lg overflow-hidden fade-up week-card border-2 border-prestigeGold/50">
+                    <div class="bg-gradient-to-r from-prestigeGold/30 to-transparent p-4 md:p-6 flex flex-col md:flex-row md:items-center gap-2 md:gap-6 border-b border-prestigeGold/30">
+                        <div class="flex items-center gap-3">
+                            <span class="bg-prestigeGold text-obsidian font-bold px-3 py-1 rounded text-sm">第八週</span>
+                            <span class="text-white font-mono text-lg">2026/05/30</span>
+                        </div>
+                    </div>
+                    <div class="p-4 md:p-6">
+                        <ul class="text-gray-300 text-lg space-y-2 list-none text-center">
+                            <li><i class="fa-solid fa-microphone text-prestigeGold mr-2"></i><span class="text-white font-bold">Keynote 專題演講</span></li>
+                            <li><i class="fa-solid fa-trophy text-prestigeGold mr-2"></i><span class="text-white font-bold">小組成果發表 Demo Day</span></li>
+                            <li><i class="fa-solid fa-certificate text-prestigeGold mr-2"></i><span class="text-white font-bold">AI 素養認證考試</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Registration & Info Section -->
+    <section id="register" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-t from-prestigeGold/10 via-deepBlue/50 to-obsidian z-0"></div>
+        <!-- Animated Wave Lines Canvas -->
+        <canvas id="cta-circles-canvas" class="absolute inset-0 w-full h-full z-[1] pointer-events-none"></canvas>
+
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <div class="text-center mb-12 fade-up">
+                <h2 class="text-prestigeGold text-base font-bold tracking-widest uppercase mb-3">REGISTRATION</h2>
+                <h3 class="text-4xl md:text-5xl font-bold text-white">報名資訊</h3>
+                <div class="w-16 h-0.5 bg-prestigeGold mx-auto mt-6"></div>
+            </div>
+
+            <!-- Info Cards: 2 columns -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10 fade-up">
+
+                <!-- Left: 課程資訊 -->
+                <div class="glass-card p-8 rounded-lg space-y-5">
+                    <h4 class="text-prestigeGold font-bold text-xl border-b border-white/10 pb-3">課程資訊</h4>
+                    <div class="flex items-start gap-4">
+                        <i class="fa-regular fa-calendar text-prestigeGold mt-1 flex-shrink-0 text-lg"></i>
+                        <div>
+                            <div class="text-white font-bold">日期</div>
+                            <p class="text-gray-300">2026.04.11 – 05.30 每週六 | 共 8 週</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-location-dot text-prestigeGold mt-1 flex-shrink-0 text-lg"></i>
+                        <div>
+                            <div class="text-white font-bold">地點</div>
+                            <p class="text-gray-300">台灣人工智慧學校 台北總校</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <i class="fa-solid fa-map text-prestigeGold mt-1 flex-shrink-0 text-lg"></i>
+                        <div>
+                            <div class="text-white font-bold">地址</div>
+                            <p class="text-gray-300">新北市板橋區中山路一段141號 14 樓</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: 學員行前準備 -->
+                <div class="glass-card p-8 rounded-lg space-y-5">
+                    <h4 class="text-prestigeGold font-bold text-xl border-b border-white/10 pb-3">學員行前準備</h4>
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-prestigeGold/20 rounded-full flex items-center justify-center mt-1">
+                            <i class="fa-solid fa-laptop text-prestigeGold"></i>
+                        </div>
+                        <div>
+                            <div class="text-white font-bold">自備筆電</div>
+                            <p class="text-gray-400 text-base">記憶體建議至少 8GB / Mac 配備 M1 晶片以上</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <div class="flex-shrink-0 w-10 h-10 bg-prestigeGold/20 rounded-full flex items-center justify-center mt-1">
+                            <i class="fa-brands fa-google text-prestigeGold"></i>
+                        </div>
+                        <div>
+                            <div class="text-white font-bold">訂閱 Google AI Pro 方案</div>
+                            <p class="text-gray-400 text-base">學員需訂閱個人 Google AI Pro 方案以配合課程實作</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA -->
+            <div class="text-center fade-up">
+                <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">8 週密集培訓，從 Prompt Engineering 到 Vibe Coding，<br class="hidden md:inline">成為 AI 時代的全方位產品經理。</p>
+                <a href="#" target="_blank" onclick="gtag('event', 'click_registration', {'event_category': 'engagement', 'event_label': 'section_cta'});" class="inline-block bg-prestigeGold hover:bg-prestigeGoldHover text-obsidian font-bold text-xl px-12 py-4 rounded-sm tracking-widest uppercase transition-all duration-300 shadow-[0_0_20px_rgba(189,161,108,0.4)] hover:shadow-[0_0_40px_rgba(189,161,108,0.6)]">
+                    立即報名
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Floating CTA Button -->
+    <a href="#register" class="floating-cta" aria-label="立即報名">
+        立即報名
+    </a>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-gray-500 text-base mb-4 md:mb-0">
+                &copy; 2026 Taiwan AI Academy. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Scroll Reveal Animation using Intersection Observer
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-gradient-to-b', 'from-deepBlue/90', 'to-obsidian/90');
+                nav.classList.remove('glass-card');
+            } else {
+                nav.classList.remove('bg-gradient-to-b', 'from-deepBlue/90', 'to-obsidian/90');
+                nav.classList.add('glass-card');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Close modals on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // CTA Section Animated Wave Lines
+        (function() {
+            const ctaCanvas = document.getElementById('cta-circles-canvas');
+            if (!ctaCanvas) return;
+
+            const ctaCtx = ctaCanvas.getContext('2d');
+            if (!ctaCtx) return;
+
+            let ctaWidth, ctaHeight;
+            let time = 0;
+
+            const LINE_COUNT = 22;
+            const BASE_AMPLITUDE = 60;
+            const FREQUENCY = 0.003;
+            const WAVE_SPEED = 0.008;
+
+            function resizeCtaCanvas() {
+                const section = ctaCanvas.parentElement;
+                if (!section) return;
+                ctaWidth = ctaCanvas.width = section.offsetWidth || window.innerWidth;
+                ctaHeight = ctaCanvas.height = section.offsetHeight || window.innerHeight;
+            }
+
+            function drawWaveLine(index) {
+                const phaseOffset = index * 0.15;
+                const baseY = ctaHeight * 0.5 + (index - LINE_COUNT / 2) * 8;
+
+                ctaCtx.beginPath();
+
+                for (let x = 0; x <= ctaWidth; x += 2) {
+                    const wave1 = Math.sin(x * FREQUENCY + time * WAVE_SPEED + phaseOffset) * BASE_AMPLITUDE;
+                    const wave2 = Math.sin(x * FREQUENCY * 2.1 + time * WAVE_SPEED * 0.7 + phaseOffset * 1.3) * BASE_AMPLITUDE * 0.3;
+                    const wave3 = Math.sin(x * FREQUENCY * 0.5 + time * WAVE_SPEED * 1.2 - phaseOffset * 0.5) * BASE_AMPLITUDE * 0.2;
+
+                    const y = baseY + wave1 + wave2 + wave3;
+
+                    if (x === 0) {
+                        ctaCtx.moveTo(x, y);
+                    } else {
+                        ctaCtx.lineTo(x, y);
+                    }
+                }
+
+                const distFromCenter = Math.abs(index - LINE_COUNT / 2) / (LINE_COUNT / 2);
+                const opacity = 0.18 - distFromCenter * 0.10;
+
+                const gradient = ctaCtx.createLinearGradient(0, 0, ctaWidth, 0);
+                gradient.addColorStop(0, `rgba(189, 161, 108, ${opacity * 0.3})`);
+                gradient.addColorStop(0.3, `rgba(189, 161, 108, ${opacity})`);
+                gradient.addColorStop(0.7, `rgba(212, 184, 138, ${opacity})`);
+                gradient.addColorStop(1, `rgba(189, 161, 108, ${opacity * 0.3})`);
+
+                ctaCtx.strokeStyle = gradient;
+                ctaCtx.lineWidth = 1;
+                ctaCtx.stroke();
+            }
+
+            function animateCtaWaves() {
+                if (!ctaCtx || !ctaWidth || !ctaHeight) return;
+                ctaCtx.clearRect(0, 0, ctaWidth, ctaHeight);
+                for (let i = 0; i < LINE_COUNT; i++) {
+                    drawWaveLine(i);
+                }
+                time += 1;
+                requestAnimationFrame(animateCtaWaves);
+            }
+
+            window.addEventListener('resize', resizeCtaCanvas);
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    setTimeout(() => { resizeCtaCanvas(); animateCtaWaves(); }, 100);
+                });
+            } else {
+                setTimeout(() => { resizeCtaCanvas(); animateCtaWaves(); }, 100);
+            }
+        })();
+
+        // Hero Section Animated Wave Lines
+        (function() {
+            const heroCanvas = document.getElementById('hero-dots-canvas');
+            if (!heroCanvas) return;
+
+            const heroCtx = heroCanvas.getContext('2d');
+            if (!heroCtx) return;
+
+            let heroWidth, heroHeight;
+            let heroTime = 0;
+
+            const LINE_COUNT = 60;
+            const BASE_AMPLITUDE = 100;
+            const FREQUENCY = 0.0025;
+            const WAVE_SPEED = 0.0075;
+
+            function resizeHeroCanvas() {
+                const section = heroCanvas.parentElement;
+                if (!section) return;
+                heroWidth = heroCanvas.width = section.offsetWidth || window.innerWidth;
+                heroHeight = heroCanvas.height = section.offsetHeight || window.innerHeight;
+            }
+
+            function drawWaveLine(index) {
+                const phaseOffset = index * 0.12;
+                const verticalSpacing = heroHeight / (LINE_COUNT + 1);
+                const baseY = verticalSpacing * (index + 1);
+
+                heroCtx.beginPath();
+
+                for (let x = 0; x <= heroWidth; x += 2) {
+                    const wave1 = Math.sin(x * FREQUENCY + heroTime * WAVE_SPEED + phaseOffset) * BASE_AMPLITUDE;
+                    const wave2 = Math.sin(x * FREQUENCY * 2.1 + heroTime * WAVE_SPEED * 0.7 + phaseOffset * 1.3) * BASE_AMPLITUDE * 0.3;
+                    const wave3 = Math.sin(x * FREQUENCY * 0.5 + heroTime * WAVE_SPEED * 1.2 - phaseOffset * 0.5) * BASE_AMPLITUDE * 0.2;
+
+                    const y = baseY + wave1 + wave2 + wave3;
+
+                    if (x === 0) {
+                        heroCtx.moveTo(x, y);
+                    } else {
+                        heroCtx.lineTo(x, y);
+                    }
+                }
+
+                const distFromCenter = Math.abs(index - LINE_COUNT / 2) / (LINE_COUNT / 2);
+                const opacity = 0.25 - distFromCenter * 0.12;
+
+                const gradient = heroCtx.createLinearGradient(0, 0, heroWidth, 0);
+                if (index % 2 === 0) {
+                    gradient.addColorStop(0, `rgba(189, 161, 108, ${opacity * 0.3})`);
+                    gradient.addColorStop(0.3, `rgba(189, 161, 108, ${opacity})`);
+                    gradient.addColorStop(0.7, `rgba(212, 184, 138, ${opacity})`);
+                    gradient.addColorStop(1, `rgba(189, 161, 108, ${opacity * 0.3})`);
+                } else {
+                    gradient.addColorStop(0, `rgba(212, 184, 138, ${opacity * 0.3})`);
+                    gradient.addColorStop(0.3, `rgba(212, 184, 138, ${opacity})`);
+                    gradient.addColorStop(0.7, `rgba(189, 161, 108, ${opacity})`);
+                    gradient.addColorStop(1, `rgba(212, 184, 138, ${opacity * 0.3})`);
+                }
+
+                heroCtx.strokeStyle = gradient;
+                heroCtx.lineWidth = 1;
+                heroCtx.stroke();
+            }
+
+            function animateHeroWaves() {
+                if (!heroCtx || !heroWidth || !heroHeight) return;
+                heroCtx.clearRect(0, 0, heroWidth, heroHeight);
+                for (let i = 0; i < LINE_COUNT; i++) {
+                    drawWaveLine(i);
+                }
+                heroTime += 1;
+                requestAnimationFrame(animateHeroWaves);
+            }
+
+            window.addEventListener('resize', resizeHeroCanvas);
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    setTimeout(() => { resizeHeroCanvas(); animateHeroWaves(); }, 100);
+                });
+            } else {
+                setTimeout(() => { resizeHeroCanvas(); animateHeroWaves(); }, 100);
+            }
+        })();
+    </script>
+</body>
+</html>
