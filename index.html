@@ -206,23 +206,6 @@
             from { background-position: 0 0; }
             to { background-position: 0 14px; }
         }
-
-        /* Lightbox */
-        .lightbox-trigger { cursor: pointer; transition: opacity 0.2s; }
-        .lightbox-trigger:hover { opacity: 0.85; }
-        #lightbox-overlay {
-            display: none; position: fixed; inset: 0; z-index: 9999;
-            background: rgba(0,0,0,0.85); align-items: center; justify-content: center;
-        }
-        #lightbox-overlay.active { display: flex; }
-        #lightbox-overlay img { max-width: 90vw; max-height: 85vh; border-radius: 0.5rem; }
-        #lightbox-close {
-            position: absolute; top: 1rem; right: 1.5rem;
-            color: #fff; font-size: 2.5rem; cursor: pointer;
-            line-height: 1; background: none; border: none;
-            transition: color 0.2s;
-        }
-        #lightbox-close:hover { color: #bda16c; }
     </style>
 </head>
 <body class="antialiased selection:bg-prestigeGold selection:text-obsidian">
@@ -472,18 +455,10 @@
                 </div>
                 <!-- Connector: Row 2 → Row 3 -->
                 <div class="feature-connector"></div>
-                <!-- Row 3: Two cards side by side -->
-                <div class="glass-card rounded-lg p-4 w-full" style="background: rgba(80, 10, 50, 0.5); border-color: rgba(180, 40, 120, 0.3);">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="glass-card glass-card-hover rounded-lg p-6 text-center">
-                            <h4 class="text-white font-bold text-xl mb-2">AI PM 社群互動</h4>
-                            <img src="assets/wd.jpg" alt="AI PM 社群互動" class="rounded-lg mx-auto mt-2 object-cover lightbox-trigger" style="width: 200px; height: 283px;" onclick="openLightbox(this)">
-                        </div>
-                        <div class="glass-card glass-card-hover rounded-lg p-6 text-center">
-                            <h4 class="text-white font-bold text-xl mb-2">AI 素養級認證考試</h4>
-                            <img src="assets/TCL.png" alt="AI 素養級認證" class="rounded-lg mx-auto mt-2 object-cover lightbox-trigger" style="width: 200px; height: 283px;" onclick="openLightbox(this)">
-                        </div>
-                    </div>
+                <!-- Row 3: Full-width -->
+                <div class="glass-card glass-card-hover rounded-lg p-6 w-full relative overflow-hidden" style="background: rgba(80, 10, 50, 0.5); border-color: rgba(180, 40, 120, 0.3);">
+                    <h4 class="text-white font-bold text-xl mb-4 text-center">AI PM 社群互動 / AI 素養級認證考試</h4>
+                    <p class="text-body text-base text-center">加入 AI PM 社群持續交流學習，<br/>並考取 AI 素養級認證為職涯加值</p>
                 </div>
             </div>
         </div>
@@ -812,7 +787,7 @@
                             <div class="text-white font-bold">日期</div>
                             <p class="text-body">
                                 2026.04.11 – 05.30<br>
-                                每週六 09:00 - 17:00 | 共 8 週
+                                每週六 09:00 - 17:00 | 共 8 週 48 小時
                             </p>
                         </div>
                     </div>
@@ -1108,24 +1083,6 @@
                 setTimeout(() => { resizeHeroCanvas(); animateHeroWaves(); }, 100);
             }
         })();
-    </script>
-    <!-- Lightbox Overlay -->
-    <div id="lightbox-overlay" onclick="closeLightbox()">
-        <button id="lightbox-close" aria-label="關閉" onclick="closeLightbox()">&times;</button>
-        <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
-    </div>
-    <script>
-        function openLightbox(el) {
-            var overlay = document.getElementById('lightbox-overlay');
-            document.getElementById('lightbox-img').src = el.src;
-            overlay.classList.add('active');
-        }
-        function closeLightbox() {
-            document.getElementById('lightbox-overlay').classList.remove('active');
-        }
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape') closeLightbox();
-        });
     </script>
 </body>
 </html>
