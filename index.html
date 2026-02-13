@@ -174,6 +174,11 @@
             .floating-cta { display: none; }
         }
 
+        /* Text Color Utilities — Gold & White Only (no gray) */
+        .text-body    { color: rgba(255, 255, 255, 0.85); }
+        .text-label   { color: rgba(189, 161, 108, 0.75); }
+        .text-caption { color: rgba(189, 161, 108, 0.55); }
+
         /* Week card hover */
         .week-card {
             transition: all 0.3s ease;
@@ -209,7 +214,7 @@
                         </a>
                     </div>
                     <!-- Mobile menu button -->
-                    <button type="button" class="lg:hidden text-gray-400 hover:text-white focus:outline-none" id="mobile-menu-button">
+                    <button type="button" class="lg:hidden text-label hover:text-white focus:outline-none" id="mobile-menu-button">
                         <i class="fa-solid fa-bars text-2xl"></i>
                     </button>
                 </div>
@@ -256,7 +261,7 @@
             </div>
 
             <!-- Organizers -->
-            <div class="mt-8 max-w-4xl mx-auto text-lg md:text-xl text-gray-300 font-light tracking-wide fade-up leading-relaxed">
+            <div class="mt-8 max-w-4xl mx-auto text-lg md:text-xl text-body font-light tracking-wide fade-up leading-relaxed">
                 <div class="inline-block text-left">
                     <div style="display: flex; align-items: baseline; margin-bottom: 0.25rem;">
                         <span style="white-space: nowrap;">主辦單位：</span>
@@ -278,14 +283,14 @@
             <div class="mt-8 flex justify-center fade-up">
                 <div class="glass-card p-6 md:p-8 rounded-lg max-w-4xl w-full flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
                     <div class="text-left w-full md:flex-1 border-b md:border-b-0 md:border-r border-white/10 pb-6 md:pb-0 md:pr-6">
-                        <div class="text-base text-gray-400 uppercase tracking-widest mb-1"><i class="fa-regular fa-calendar mr-2"></i>Date</div>
+                        <div class="text-base text-label uppercase tracking-widest mb-1"><i class="fa-regular fa-calendar mr-2"></i>Date</div>
                         <div class="text-2xl text-white font-serif">2026.04.11 – 05.30</div>
-                        <div class="text-base text-gray-400 mt-1">每週六 | 共 8 週</div>
+                        <div class="text-base text-label mt-1">每週六 | 共 8 週</div>
                     </div>
                     <div class="text-left w-full md:flex-1">
-                        <div class="text-base text-gray-400 uppercase tracking-widest mb-1"><i class="fa-solid fa-location-dot mr-2"></i>Venue</div>
+                        <div class="text-base text-label uppercase tracking-widest mb-1"><i class="fa-solid fa-location-dot mr-2"></i>Venue</div>
                         <div class="text-xl text-white">台灣人工智慧學校 台北總校</div>
-                        <div class="text-base text-gray-400 mt-1">新北市板橋區中山路一段141號 14 樓</div>
+                        <div class="text-base text-label mt-1">新北市板橋區中山路一段141號 14 樓</div>
                     </div>
                 </div>
             </div>
@@ -312,7 +317,7 @@
                     「當 AI 做的樣品屋已經能實際住人時，<br class="hidden md:inline">PM 與工程師的邊界正在消失」
                 </p>
 
-                <div class="text-gray-300 text-lg md:text-xl leading-relaxed space-y-6 text-left md:text-center max-w-4xl mx-auto">
+                <div class="text-body text-lg md:text-xl leading-relaxed space-y-6 text-left md:text-center max-w-4xl mx-auto">
                     <p>
                         在 AI 時代，產品經理 / 專案經理 (PM) 的定義正在被改寫，AI 的大量應用帶來產業逆分工趨勢，產、銷、人、發、財的職能邊界也在急速的消融中，企業組織與工作流程的重構勢不可擋！新時代的經理人透過 AI 的賦能助益，更能將 PM 寶貴的生產力聚焦在回答<strong class="text-white">「做什麼」</strong>與<strong class="text-white">「為什麼」</strong>這兩件無可取代的價值上。
                     </p>
@@ -345,7 +350,7 @@
                         <i class="fa-solid fa-user-tie"></i>
                     </div>
                     <h4 class="text-xl font-bold text-white mb-4">現職產品經理<br>或具備專案管理經驗人士</h4>
-                    <p class="text-gray-400 text-base leading-relaxed">
+                    <p class="text-label text-base leading-relaxed">
                         想學習 AI 技術和最新趨勢，提升產品開發與專案管理中的專業能力。
                     </p>
                 </div>
@@ -356,7 +361,7 @@
                         <i class="fa-solid fa-people-group"></i>
                     </div>
                     <h4 class="text-xl font-bold text-white mb-4">部門主管與團隊領導者<br>數位轉型推動者</h4>
-                    <p class="text-gray-400 text-base leading-relaxed">
+                    <p class="text-label text-base leading-relaxed">
                         負責跨部門協作，想藉 AI 工具優化流程與提升績效、加速變革。
                     </p>
                 </div>
@@ -367,7 +372,7 @@
                         <i class="fa-solid fa-arrow-trend-up"></i>
                     </div>
                     <h4 class="text-xl font-bold text-white mb-4">非產品經理背景<br>的職場人士</h4>
-                    <p class="text-gray-400 text-base leading-relaxed">
+                    <p class="text-label text-base leading-relaxed">
                         希望轉型成為產品經理，需要 AI 賦能跨領域專業。
                     </p>
                 </div>
@@ -392,24 +397,24 @@
                 <div class="glass-card rounded-lg p-6 text-center" style="background: rgba(80, 10, 50, 0.5); border-color: rgba(180, 40, 120, 0.3);">
                     <div class="text-3xl text-prestigeGold mb-3"><i class="fa-solid fa-globe"></i></div>
                     <h4 class="text-white font-bold text-xl mb-2">AI × PM 全局觀</h4>
-                    <p class="text-gray-300 text-base">專題演講 / 短講</p>
+                    <p class="text-body text-base">專題演講 / 短講</p>
                 </div>
                 <!-- Row 2: Three cards side by side -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                     <div class="glass-card rounded-lg p-6 text-center">
                         <div class="text-3xl text-prestigeGold mb-3"><i class="fa-solid fa-laptop-code"></i></div>
                         <h4 class="text-white font-bold text-lg mb-2">Skill</h4>
-                        <p class="text-gray-400 text-sm">AI × PM<br>硬技能實作操練</p>
+                        <p class="text-label text-sm">AI × PM<br>硬技能實作操練</p>
                     </div>
                     <div class="glass-card rounded-lg p-6 text-center">
                         <div class="text-3xl text-prestigeGold mb-3"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
                         <h4 class="text-white font-bold text-lg mb-2">Case Study</h4>
-                        <p class="text-gray-400 text-sm">PM 場景案例分析</p>
+                        <p class="text-label text-sm">PM 場景案例分析</p>
                     </div>
                     <div class="glass-card rounded-lg p-6 text-center">
                         <div class="text-3xl text-prestigeGold mb-3"><i class="fa-solid fa-rocket"></i></div>
                         <h4 class="text-white font-bold text-lg mb-2">Demo Day</h4>
-                        <p class="text-gray-400 text-sm">Capstone 專題發表</p>
+                        <p class="text-label text-sm">Capstone 專題發表</p>
                     </div>
                 </div>
                 <!-- Row 3: Full-width -->
@@ -441,7 +446,7 @@
                     </div>
                     <div>
                         <h4 class="text-xl font-bold text-white mb-2">學會高效 Prompt Engineering</h4>
-                        <p class="text-gray-300 text-base leading-relaxed">運用 Prompt Engineering 生成內容協助撰寫企劃書、簡報內容、市場分析報告，提升溝通說服力。</p>
+                        <p class="text-body text-base leading-relaxed">運用 Prompt Engineering 生成內容協助撰寫企劃書、簡報內容、市場分析報告，提升溝通說服力。</p>
                     </div>
                 </div>
 
@@ -452,7 +457,7 @@
                     </div>
                     <div>
                         <h4 class="text-xl font-bold text-white mb-2">運用 RAG 進行個人知識管理</h4>
-                        <p class="text-gray-300 text-base leading-relaxed">運用 RAG 做知識管理分析大量數據，發掘市場趨勢，提供風險預警、資源優化等洞見，幫助決策。</p>
+                        <p class="text-body text-base leading-relaxed">運用 RAG 做知識管理分析大量數據，發掘市場趨勢，提供風險預警、資源優化等洞見，幫助決策。</p>
                     </div>
                 </div>
 
@@ -463,7 +468,7 @@
                     </div>
                     <div>
                         <h4 class="text-xl font-bold text-white mb-2">學會自動化工作流與專案儀表板</h4>
-                        <p class="text-gray-300 text-base leading-relaxed">運用自動化工作流程與 AI 代理省下重複繁瑣低產值的工作時間。確保資訊流暢，即時更新儀表板，實現數據驅動的智慧管理。</p>
+                        <p class="text-body text-base leading-relaxed">運用自動化工作流程與 AI 代理省下重複繁瑣低產值的工作時間。確保資訊流暢，即時更新儀表板，實現數據驅動的智慧管理。</p>
                     </div>
                 </div>
 
@@ -474,7 +479,7 @@
                     </div>
                     <div>
                         <h4 class="text-xl font-bold text-white mb-2">學會 Vibe Coding：用聊天與對話做出產品原型</h4>
-                        <p class="text-gray-300 text-base leading-relaxed">讓非工程背景的 PM 可以由產品概念做出 MVP（Minimum Viable Product），直接跟客戶提案，減少溝通成本與誤差空間。</p>
+                        <p class="text-body text-base leading-relaxed">讓非工程背景的 PM 可以由產品概念做出 MVP（Minimum Viable Product），直接跟客戶提案，減少溝通成本與誤差空間。</p>
                     </div>
                 </div>
 
@@ -485,7 +490,7 @@
                     </div>
                     <div>
                         <h4 class="text-xl font-bold text-white mb-2">專題協作與發表競賽</h4>
-                        <p class="text-gray-300 text-base leading-relaxed">PM 軟性技能的充分運用：團隊合作、時間管理、領導力、溝通表達、問題解決能力。</p>
+                        <p class="text-body text-base leading-relaxed">PM 軟性技能的充分運用：團隊合作、時間管理、領導力、溝通表達、問題解決能力。</p>
                     </div>
                 </div>
 
@@ -496,7 +501,7 @@
                     </div>
                     <div>
                         <h4 class="text-xl font-bold text-white mb-2">AI 素養級認證考試</h4>
-                        <p class="text-gray-300 text-base leading-relaxed">免費獲得認證資格考試一次。台灣人工智慧學校規畫推出的 AI 素養級認證（AIATCL），為台灣職場常見的 AI 證照，在國內具一定公信力。此證照不考寫程式，也不強調工具操作，而是著重 AI 的基本概念、常見應用，以及使用 AI 時該注意的風險與倫理問題。</p>
+                        <p class="text-body text-base leading-relaxed">免費獲得認證資格考試一次。台灣人工智慧學校規畫推出的 AI 素養級認證（AIATCL），為台灣職場常見的 AI 證照，在國內具一定公信力。此證照不考寫程式，也不強調工具操作，而是著重 AI 的基本概念、常見應用，以及使用 AI 時該注意的風險與倫理問題。</p>
                     </div>
                 </div>
 
@@ -507,7 +512,7 @@
                     </div>
                     <div>
                         <h4 class="text-xl font-bold text-white mb-2">AI PM 經理人的珍貴交流人脈社群</h4>
-                        <p class="text-gray-300 text-base leading-relaxed">課後加入 AI PM 經理人社群，與各期學員持續交流產業趨勢、職涯發展與合作機會。</p>
+                        <p class="text-body text-base leading-relaxed">課後加入 AI PM 經理人社群，與各期學員持續交流產業趨勢、職涯發展與合作機會。</p>
                     </div>
                 </div>
 
@@ -537,7 +542,7 @@
                         </div>
                     </div>
                     <div class="p-4 md:p-6">
-                        <ul class="text-gray-300 text-base space-y-2 list-none">
+                        <ul class="text-body text-base space-y-2 list-none">
                             <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i><span class="text-white font-bold">Keynote 專題演講</span></li>
                             <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>AI PM 概論</li>
                             <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>Gen AI 概論</li>
@@ -555,13 +560,13 @@
                     </div>
                     <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
-                            <h4 class="text-white text-lg font-bold">AI 溝通術：用提示指令高效產出多模態企劃內容</h4>
+                            <div class="text-label text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
+                            <h4 class="text-white text-lg font-bold">AI 溝通術：用提示指令高效產出企劃內容</h4>
                         </div>
                         <div>
-                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
+                            <div class="text-label text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
                             <h4 class="text-white text-lg font-bold mb-2">產品開發企劃</h4>
-                            <ul class="text-gray-300 text-base space-y-1 list-none">
+                            <ul class="text-body text-base space-y-1 list-none">
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>市場與產品規劃全攻略</li>
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>AI 輔助 PRD 與競品分析</li>
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>視覺化專案管理 (Mermaid)</li>
@@ -580,13 +585,13 @@
                     </div>
                     <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
+                            <div class="text-label text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
                             <h4 class="text-white text-lg font-bold">個人知識庫的 AI 應用：快速從資料中找到洞察與摘要 (RAG)</h4>
                         </div>
                         <div>
-                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
+                            <div class="text-label text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
                             <h4 class="text-white text-lg font-bold mb-2">範疇 / 時間 / 人力 / 品質控管</h4>
-                            <ul class="text-gray-300 text-base space-y-1 list-none">
+                            <ul class="text-body text-base space-y-1 list-none">
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>建立專案專屬 RAG 知識庫</li>
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>自動化合約與文件解析</li>
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>智慧知識管理系統</li>
@@ -605,13 +610,13 @@
                     </div>
                     <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
+                            <div class="text-label text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
                             <h4 class="text-white text-lg font-bold">簡報效率倍增：運用 AI 自動優化日常文件、簡報與影音製作 (Workspace)</h4>
                         </div>
                         <div>
-                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
+                            <div class="text-label text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
                             <h4 class="text-white text-lg font-bold mb-2">成本管理 / 採購管理</h4>
-                            <ul class="text-gray-300 text-base space-y-1 list-none">
+                            <ul class="text-body text-base space-y-1 list-none">
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>專案成本與時程視覺化</li>
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>AI 驅動的行銷素材生成</li>
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>整合式專案藍圖繪製</li>
@@ -630,13 +635,13 @@
                     </div>
                     <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
+                            <div class="text-label text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
                             <h4 class="text-white text-lg font-bold">業務流程自動化：透過對話式 AI 輕鬆建立專屬的自動化工作夥伴 (RPA)</h4>
                         </div>
                         <div>
-                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
+                            <div class="text-label text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
                             <h4 class="text-white text-lg font-bold mb-2">溝通管理 / 風險管理</h4>
-                            <ul class="text-gray-300 text-base space-y-1 list-none">
+                            <ul class="text-body text-base space-y-1 list-none">
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>從建議到自動執行的 RPA（機器人流程自動化）</li>
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>自動報價與合約生成機制</li>
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>規格轉報價的自動化工作流</li>
@@ -655,13 +660,13 @@
                     </div>
                     <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
+                            <div class="text-label text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
                             <h4 class="text-white text-lg font-bold">Vibe Coding：用說的做原型開發 (Antigravity)</h4>
                         </div>
                         <div>
-                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
+                            <div class="text-label text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
                             <h4 class="text-white text-lg font-bold mb-2">產品架構、高效打造 DEMO</h4>
-                            <ul class="text-gray-300 text-base space-y-1 list-none">
+                            <ul class="text-body text-base space-y-1 list-none">
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>Vibe Coding 產品開發全流程</li>
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>零代碼打造 CMS（內容管理系統）後台</li>
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>建立工程協作的共同語言</li>
@@ -680,13 +685,13 @@
                     </div>
                     <div class="p-4 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div>
-                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
+                            <div class="text-label text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-sun mr-1"></i> 上午 — AI Skill</div>
                             <h4 class="text-white text-lg font-bold">Vibe Coding：實戰部署 (Firebase Studio)</h4>
                         </div>
                         <div>
-                            <div class="text-gray-400 text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
+                            <div class="text-label text-sm uppercase tracking-wider mb-2"><i class="fa-regular fa-moon mr-1"></i> 下午 — PM 實務</div>
                             <h4 class="text-white text-lg font-bold mb-2">產品介面與整合、快速打造 MVP</h4>
-                            <ul class="text-gray-300 text-base space-y-1 list-none">
+                            <ul class="text-body text-base space-y-1 list-none">
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>打造可互動的小組服務 (MVP)</li>
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>完善前端視覺與使用者體驗</li>
                                 <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>產品驗證與 Demo Day 準備</li>
@@ -704,7 +709,7 @@
                         </div>
                     </div>
                     <div class="p-4 md:p-6">
-                        <ul class="text-gray-300 text-lg space-y-2 list-none text-center">
+                        <ul class="text-body text-lg space-y-2 list-none text-center">
                             <li><i class="fa-solid fa-microphone text-prestigeGold mr-2"></i><span class="text-white font-bold">Keynote 專題演講</span></li>
                             <li><i class="fa-solid fa-trophy text-prestigeGold mr-2"></i><span class="text-white font-bold">小組成果發表 Demo Day</span></li>
                             <li><i class="fa-solid fa-certificate text-prestigeGold mr-2"></i><span class="text-white font-bold">AI 素養認證考試</span></li>
@@ -740,21 +745,21 @@
                         <i class="fa-regular fa-calendar text-prestigeGold mt-1 flex-shrink-0 text-lg"></i>
                         <div>
                             <div class="text-white font-bold">日期</div>
-                            <p class="text-gray-300">2026.04.11 – 05.30 每週六 | 共 8 週</p>
+                            <p class="text-body">2026.04.11 – 05.30 每週六 | 共 8 週</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-4">
                         <i class="fa-solid fa-location-dot text-prestigeGold mt-1 flex-shrink-0 text-lg"></i>
                         <div>
                             <div class="text-white font-bold">地點</div>
-                            <p class="text-gray-300">台灣人工智慧學校 台北總校</p>
+                            <p class="text-body">台灣人工智慧學校 台北總校</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-4">
                         <i class="fa-solid fa-map text-prestigeGold mt-1 flex-shrink-0 text-lg"></i>
                         <div>
                             <div class="text-white font-bold">地址</div>
-                            <p class="text-gray-300">新北市板橋區中山路一段141號 14 樓</p>
+                            <p class="text-body">新北市板橋區中山路一段141號 14 樓</p>
                         </div>
                     </div>
                 </div>
@@ -768,7 +773,7 @@
                         </div>
                         <div>
                             <div class="text-white font-bold">自備筆電</div>
-                            <p class="text-gray-400 text-base">記憶體建議使用 16GB 或更多以獲得更佳體驗</p>
+                            <p class="text-label text-base">記憶體建議使用 16GB 或更多以獲得更佳體驗</p>
                         </div>
                     </div>
                     <div class="flex items-start gap-4">
@@ -777,7 +782,7 @@
                         </div>
                         <div>
                             <div class="text-white font-bold">訂閱 Google AI Pro 方案</div>
-                            <p class="text-gray-400 text-base">學員需訂閱個人 Google AI Pro 方案以配合課程實作。<a href="https://gemini.google/tw/subscriptions/" target="_blank" rel="noopener noreferrer" class="text-prestigeGold hover:text-prestigeGoldHover underline transition-colors">訂閱連結</a></p>
+                            <p class="text-label text-base">學員需訂閱個人 Google AI Pro 方案以配合課程實作。<a href="https://gemini.google/tw/subscriptions/" target="_blank" rel="noopener noreferrer" class="text-prestigeGold hover:text-prestigeGoldHover underline transition-colors">訂閱連結</a></p>
                         </div>
                     </div>
                 </div>
@@ -786,7 +791,7 @@
 
             <!-- CTA -->
             <div class="text-center fade-up">
-                <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">8 週密集培訓，從 Prompt Engineering 到 Vibe Coding，<br class="hidden md:inline">成為 AI 時代的全方位產品經理。</p>
+                <p class="text-xl text-body mb-8 max-w-2xl mx-auto">8 週密集培訓，從 Prompt Engineering 到 Vibe Coding，<br class="hidden md:inline">成為 AI 時代的全方位產品經理。</p>
                 <a href="#" target="_blank" onclick="gtag('event', 'click_registration', {'event_category': 'engagement', 'event_label': 'section_cta'});" class="inline-block bg-prestigeGold hover:bg-prestigeGoldHover text-obsidian font-bold text-xl px-12 py-4 rounded-sm tracking-widest uppercase transition-all duration-300 shadow-[0_0_20px_rgba(189,161,108,0.4)] hover:shadow-[0_0_40px_rgba(189,161,108,0.6)]">
                     立即報名
                 </a>
@@ -803,7 +808,7 @@
     <!-- Footer -->
     <footer class="bg-black py-12 border-t border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-            <div class="text-gray-500 text-base mb-4 md:mb-0">
+            <div class="text-caption text-base mb-4 md:mb-0">
                 &copy; 2026 Taiwan AI Academy. All Rights Reserved.
             </div>
         </div>
