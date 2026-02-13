@@ -206,6 +206,23 @@
             from { background-position: 0 0; }
             to { background-position: 0 14px; }
         }
+
+        /* Lightbox */
+        .lightbox-trigger { cursor: pointer; transition: opacity 0.2s; }
+        .lightbox-trigger:hover { opacity: 0.85; }
+        #lightbox-overlay {
+            display: none; position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0,0,0,0.85); align-items: center; justify-content: center;
+        }
+        #lightbox-overlay.active { display: flex; }
+        #lightbox-overlay img { max-width: 90vw; max-height: 85vh; border-radius: 0.5rem; }
+        #lightbox-close {
+            position: absolute; top: 1rem; right: 1.5rem;
+            color: #fff; font-size: 2.5rem; cursor: pointer;
+            line-height: 1; background: none; border: none;
+            transition: color 0.2s;
+        }
+        #lightbox-close:hover { color: #bda16c; }
     </style>
 </head>
 <body class="antialiased selection:bg-prestigeGold selection:text-obsidian">
@@ -337,7 +354,7 @@
                         在 AI 時代，產品經理 / 專案經理 (PM) 的定義正在被改寫，AI 的大量應用帶來產業逆分工趨勢，產、銷、人、發、財的職能邊界也在急速的消融中，企業組織與工作流程的重構勢不可擋！新時代的經理人透過 AI 的賦能助益，更能將 PM 寶貴的生產力聚焦在回答<strong class="text-white">「做什麼」</strong>與<strong class="text-white">「為什麼」</strong>這兩件無可取代的價值上。
                     </p>
                     <p>
-                        台灣人工智慧學校累積八年「經理人週末研修班」的培訓經驗精益求精推出<strong class="text-white">經理人 AI PM 班</strong>，除了透過大量的 AI 硬技能實作操練，更透過案例研討與小組專案協作，強化團隊合作、領導力、溝通說服力等軟性技能，打造軟硬實力兼具、以一擋十的全方位產品經理。
+                        台灣人工智慧學校累積八年「經理人週末研修班」的培訓經驗，精益求精推出<strong class="text-white">經理人 AI PM 班</strong>，除了透過大量的 AI 硬技能實作操練，更透過案例研討與小組專案協作，強化團隊合作、領導力、溝通說服力等軟性技能，打造軟硬實力兼具、以一擋十的全方位產品經理。
                     </p>
                     <p>
                         課程後學員也將擁有 <strong class="text-white">AI PM 經理人社群</strong>珍貴的人脈存摺，並獲得台灣人工智慧學校 <strong class="text-white">AI 素養級認證考試</strong>資格一次！
@@ -455,10 +472,18 @@
                 </div>
                 <!-- Connector: Row 2 → Row 3 -->
                 <div class="feature-connector"></div>
-                <!-- Row 3: Full-width -->
-                <div class="glass-card glass-card-hover rounded-lg p-6 text-center w-full" style="background: rgba(80, 10, 50, 0.5); border-color: rgba(180, 40, 120, 0.3);">
-                    <h4 class="text-white font-bold text-xl mb-2">AI PM 社群互動 / AI 素養級認證考試</h4>
-                    <p class="text-body text-base">加入 AI PM 社群持續交流學習，並考取 AI 素養級認證為職涯加值</p>
+                <!-- Row 3: Two cards side by side -->
+                <div class="glass-card rounded-lg p-4 w-full" style="background: rgba(80, 10, 50, 0.5); border-color: rgba(180, 40, 120, 0.3);">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="glass-card glass-card-hover rounded-lg p-6 text-center">
+                            <h4 class="text-white font-bold text-xl mb-2">AI PM 社群互動</h4>
+                            <img src="assets/wd.jpg" alt="AI PM 社群互動" class="rounded-lg mx-auto mt-2 object-cover lightbox-trigger" style="width: 200px; height: 283px;" onclick="openLightbox(this)">
+                        </div>
+                        <div class="glass-card glass-card-hover rounded-lg p-6 text-center">
+                            <h4 class="text-white font-bold text-xl mb-2">AI 素養級認證考試</h4>
+                            <img src="assets/TCL.png" alt="AI 素養級認證" class="rounded-lg mx-auto mt-2 object-cover lightbox-trigger" style="width: 200px; height: 283px;" onclick="openLightbox(this)">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -505,7 +530,7 @@
                         <span class="text-prestigeGold font-bold text-xl">3</span>
                     </div>
                     <div>
-                        <h4 class="text-xl font-bold text-white mb-2">學會自動化工作流與專案儀表板</h4>
+                        <h4 class="text-xl font-bold text-white mb-2">學習自動化工作流與專案儀表板</h4>
                         <p class="text-body text-base leading-relaxed">運用自動化工作流程與 AI 代理省下重複繁瑣低產值的工作時間。確保資訊流暢，即時更新儀表板，實現數據驅動的智慧管理。</p>
                     </div>
                 </div>
@@ -516,7 +541,7 @@
                         <span class="text-prestigeGold font-bold text-xl">4</span>
                     </div>
                     <div>
-                        <h4 class="text-xl font-bold text-white mb-2">學會 Vibe Coding：用聊天與對話做出產品原型</h4>
+                        <h4 class="text-xl font-bold text-white mb-2">學習 Vibe Coding：用聊天與對話做出產品原型</h4>
                         <p class="text-body text-base leading-relaxed">讓非工程背景的 PM 可以由產品概念做出 MVP（Minimum Viable Product），直接跟客戶提案，減少溝通成本與誤差空間。</p>
                     </div>
                 </div>
@@ -549,7 +574,7 @@
                         <span class="text-prestigeGold font-bold text-xl">7</span>
                     </div>
                     <div>
-                        <h4 class="text-xl font-bold text-white mb-2">AI PM 經理人的珍貴交流人脈社群</h4>
+                        <h4 class="text-xl font-bold text-white mb-2">AI PM 經理人的產業交流人脈社群</h4>
                         <p class="text-body text-base leading-relaxed">課後加入 AI PM 經理人社群，與各期學員持續交流產業趨勢、職涯發展與合作機會。</p>
                     </div>
                 </div>
@@ -747,7 +772,7 @@
                         </div>
                     </div>
                     <div class="p-4 md:p-6">
-                        <ul class="text-body text-lg space-y-2 list-none text-center">
+                        <ul class="text-body text-lg space-y-2 list-none">
                             <li><i class="fa-solid fa-microphone text-prestigeGold mr-2"></i><span class="text-white font-bold">Keynote 專題演講</span></li>
                             <li><i class="fa-solid fa-trophy text-prestigeGold mr-2"></i><span class="text-white font-bold">小組成果發表 Demo Day</span></li>
                             <li><i class="fa-solid fa-certificate text-prestigeGold mr-2"></i><span class="text-white font-bold">AI 素養級認證考試</span></li>
@@ -829,7 +854,7 @@
                         </div>
                         <div>
                             <div class="text-white font-bold">訂閱 Google AI Pro 方案</div>
-                            <p class="text-body">學員需訂閱個人<a href="https://gemini.google/tw/subscriptions/" target="_blank" rel="noopener noreferrer" class="text-prestigeGold hover:text-prestigeGoldHover underline transition-colors">Google AI Pro 方案</a>以配合課程實作。</p>
+                            <p class="text-body">學員需訂閱個人<a href="https://gemini.google/tw/subscriptions/" target="_blank" rel="noopener noreferrer" class="text-prestigeGold hover:text-prestigeGoldHover underline transition-colors">Google AI Pro 方案</a>。</p>
                         </div>
                     </div>
                 </div>
@@ -1083,6 +1108,24 @@
                 setTimeout(() => { resizeHeroCanvas(); animateHeroWaves(); }, 100);
             }
         })();
+    </script>
+    <!-- Lightbox Overlay -->
+    <div id="lightbox-overlay" onclick="closeLightbox()">
+        <button id="lightbox-close" aria-label="關閉" onclick="closeLightbox()">&times;</button>
+        <img id="lightbox-img" src="" alt="" onclick="event.stopPropagation()">
+    </div>
+    <script>
+        function openLightbox(el) {
+            var overlay = document.getElementById('lightbox-overlay');
+            document.getElementById('lightbox-img').src = el.src;
+            overlay.classList.add('active');
+        }
+        function closeLightbox() {
+            document.getElementById('lightbox-overlay').classList.remove('active');
+        }
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeLightbox();
+        });
     </script>
 </body>
 </html>
