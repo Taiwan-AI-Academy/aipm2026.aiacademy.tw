@@ -273,51 +273,66 @@
         }
 
         /* Stop Properties panel */
+        /* ── Stop Properties — table style ─────────────── */
         .ai-props {
-            display: flex; gap: 20px;
             margin-top: 20px;
-            padding: 16px;
-            background: #1e1e1e;
             border-radius: 6px;
             border: 1px solid rgba(255,255,255,0.07);
-            min-height: 90px;
+            overflow: hidden;
+            background: #1c1c1c;
         }
-
-        .ai-props-swatch-wrap {
-            position: relative; width: 72px; height: 72px;
-            border-radius: 5px; overflow: hidden; flex-shrink: 0;
+        .ai-prop-hdr {
+            display: grid;
+            grid-template-columns: 22px 40px 90px 1fr 52px 1fr;
+            gap: 0 12px;
+            padding: 6px 14px;
+            background: #252525;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            font-size: 10px; text-transform: uppercase; letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.22); font-family: var(--mono);
+        }
+        .ai-prop-row {
+            display: grid;
+            grid-template-columns: 22px 40px 90px 1fr 52px 1fr;
+            gap: 0 12px;
+            align-items: center;
+            padding: 7px 14px;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+            border-left: 2px solid transparent;
+            cursor: pointer;
+            transition: background 0.15s, border-left-color 0.15s;
+        }
+        .ai-prop-row:last-child { border-bottom: none; }
+        .ai-prop-row:hover { background: rgba(255,255,255,0.03); }
+        .ai-prop-row.highlighted {
+            background: rgba(189,161,108,0.07);
+            border-left-color: var(--gold);
+        }
+        .ai-prop-swatch-sm {
+            width: 20px; height: 20px;
+            border-radius: 3px;
             border: 1px solid rgba(255,255,255,0.15);
+            position: relative; overflow: hidden;
         }
-        .ai-props-checker {
+        .checker-mini {
             position: absolute; inset: 0;
             background-image:
-                linear-gradient(45deg, #666 25%, transparent 25%),
-                linear-gradient(-45deg, #666 25%, transparent 25%),
-                linear-gradient(45deg, transparent 75%, #666 75%),
-                linear-gradient(-45deg, transparent 75%, #666 75%);
-            background-size: 12px 12px;
-            background-position: 0 0, 0 6px, 6px -6px, -6px 0;
-            background-color: #444;
+                linear-gradient(45deg, #555 25%, transparent 25%),
+                linear-gradient(-45deg, #555 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #555 75%),
+                linear-gradient(-45deg, transparent 75%, #555 75%);
+            background-size: 6px 6px;
+            background-position: 0 0, 0 3px, 3px -3px, -3px 0;
+            background-color: #333;
         }
-        .ai-props-swatch-color { position: absolute; inset: 0; }
-
-        .ai-props-data {
-            flex: 1;
-            display: grid;
-            grid-template-columns: 72px 1fr;
-            column-gap: 14px; row-gap: 5px;
-            align-content: center;
-        }
-        .prop-k {
-            font-size: 10px; color: rgba(255,255,255,0.35);
-            text-transform: uppercase; letter-spacing: 0.1em;
-            font-family: var(--mono); padding: 1px 0; align-self: center;
-        }
-        .prop-v {
-            font-size: 12px; color: rgba(255,255,255,0.8);
-            font-family: var(--mono); padding: 1px 0; align-self: center;
-        }
-        .prop-v .hl { color: var(--gold); }
+        .swatch-fill { position: absolute; inset: 0; }
+        .ai-prop-pos { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.35); }
+        .ai-prop-hex { font-family: var(--mono); font-size: 12px; color: var(--gold); }
+        .ai-prop-rgb { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.55); }
+        .ai-prop-alpha-col { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.45); }
+        .ai-prop-last { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.38); }
+        .ai-prop-row.highlighted .ai-prop-hex { color: var(--gold-light); }
+        .ai-prop-row.highlighted .ai-prop-alpha-col { color: var(--gold); }
 
         /* CSS code section */
         .ai-code-section {
@@ -596,7 +611,7 @@
 
                     <!-- Color stops below bar -->
                     <div class="ai-stops-track" id="l1-stops">
-                        <div class="ai-stop selected" style="left:0%"   data-panel="l1" data-idx="0">
+                        <div class="ai-stop" style="left:0%"   data-panel="l1" data-idx="0">
                             <div class="ai-stop-arrow"></div>
                             <div class="ai-stop-box" style="background:#9c005d;"></div>
                         </div>
@@ -619,18 +634,34 @@
                         <span class="ai-ruler-tick" style="left:100%">100%</span>
                     </div>
 
-                    <!-- Stop properties -->
+                    <!-- Stop properties — all stops listed -->
                     <div class="ai-props" id="l1-props">
-                        <div class="ai-props-swatch-wrap">
-                            <div class="ai-props-checker"></div>
-                            <div class="ai-props-swatch-color" id="l1-swatch" style="background:#9c005d;"></div>
+                        <div class="ai-prop-hdr">
+                            <span></span><span>Pos</span><span>Hex</span><span>RGB</span><span>Alpha</span><span>Name</span>
                         </div>
-                        <div class="ai-props-data" id="l1-data">
-                            <div class="prop-k">Name</div><div class="prop-v" id="l1-name">Deep Magenta</div>
-                            <div class="prop-k">Hex</div><div class="prop-v"><span class="hl" id="l1-hex">#9c005d</span></div>
-                            <div class="prop-k">RGB</div><div class="prop-v" id="l1-rgb">rgb(156, 0, 93)</div>
-                            <div class="prop-k">Alpha</div><div class="prop-v" id="l1-alpha">100%</div>
-                            <div class="prop-k">Position</div><div class="prop-v" id="l1-pos">0%</div>
+                        <div class="ai-prop-row" data-panel="l1" data-idx="0">
+                            <div class="ai-prop-swatch-sm"><div class="checker-mini"></div><div class="swatch-fill" style="background:#9c005d;"></div></div>
+                            <div class="ai-prop-pos">0%</div>
+                            <div class="ai-prop-hex">#9c005d</div>
+                            <div class="ai-prop-rgb">rgb(156, 0, 93)</div>
+                            <div class="ai-prop-alpha-col">100%</div>
+                            <div class="ai-prop-last">Deep Magenta</div>
+                        </div>
+                        <div class="ai-prop-row" data-panel="l1" data-idx="1">
+                            <div class="ai-prop-swatch-sm"><div class="checker-mini"></div><div class="swatch-fill" style="background:#1a0512;"></div></div>
+                            <div class="ai-prop-pos">50%</div>
+                            <div class="ai-prop-hex">#1a0512</div>
+                            <div class="ai-prop-rgb">rgb(26, 5, 18)</div>
+                            <div class="ai-prop-alpha-col">100%</div>
+                            <div class="ai-prop-last">Midnight Purple</div>
+                        </div>
+                        <div class="ai-prop-row" data-panel="l1" data-idx="2">
+                            <div class="ai-prop-swatch-sm"><div class="checker-mini"></div><div class="swatch-fill" style="background:#0d0209;"></div></div>
+                            <div class="ai-prop-pos">100%</div>
+                            <div class="ai-prop-hex">#0d0209</div>
+                            <div class="ai-prop-rgb">rgb(13, 2, 9)</div>
+                            <div class="ai-prop-alpha-col">100%</div>
+                            <div class="ai-prop-last">Obsidian</div>
                         </div>
                     </div>
                 </div>
@@ -677,7 +708,7 @@
 
                     <!-- Opacity track above bar -->
                     <div class="ai-opacity-track" id="l3-op-track">
-                        <div class="ai-op-stop selected" style="left:0%"   data-panel="l3" data-idx="0">
+                        <div class="ai-op-stop" style="left:0%"   data-panel="l3" data-idx="0">
                             <div class="ai-op-box" style="opacity:0.3;"></div>
                             <div class="ai-op-arrow"></div>
                         </div>
@@ -698,7 +729,7 @@
 
                     <!-- Color stops below bar -->
                     <div class="ai-stops-track" id="l3-stops">
-                        <div class="ai-stop selected" style="left:0%"   data-panel="l3" data-idx="0">
+                        <div class="ai-stop" style="left:0%"   data-panel="l3" data-idx="0">
                             <div class="ai-stop-arrow"></div>
                             <div class="ai-stop-box" style="background:#9c005d;"></div>
                         </div>
@@ -721,18 +752,34 @@
                         <span class="ai-ruler-tick" style="left:100%">100%</span>
                     </div>
 
-                    <!-- Stop properties -->
+                    <!-- Stop properties — all stops listed -->
                     <div class="ai-props" id="l3-props">
-                        <div class="ai-props-swatch-wrap">
-                            <div class="ai-props-checker"></div>
-                            <div class="ai-props-swatch-color" id="l3-swatch" style="background:rgba(156,0,93,0.3);"></div>
+                        <div class="ai-prop-hdr">
+                            <span></span><span>Pos</span><span>Hex</span><span>RGB</span><span>Alpha</span><span>RGBA（完整）</span>
                         </div>
-                        <div class="ai-props-data" id="l3-data">
-                            <div class="prop-k">Name</div><div class="prop-v" id="l3-name">Deep Magenta (30%)</div>
-                            <div class="prop-k">Hex</div><div class="prop-v"><span class="hl" id="l3-hex">#9c005d</span></div>
-                            <div class="prop-k">RGB</div><div class="prop-v" id="l3-rgb">rgb(156, 0, 93)</div>
-                            <div class="prop-k">Alpha</div><div class="prop-v" id="l3-alpha"><span class="hl">30%</span> · rgba(156, 0, 93, <span class="hl">0.3</span>)</div>
-                            <div class="prop-k">Position</div><div class="prop-v" id="l3-pos">0%</div>
+                        <div class="ai-prop-row" data-panel="l3" data-idx="0">
+                            <div class="ai-prop-swatch-sm"><div class="checker-mini"></div><div class="swatch-fill" style="background:rgba(156,0,93,0.3);"></div></div>
+                            <div class="ai-prop-pos">0%</div>
+                            <div class="ai-prop-hex">#9c005d</div>
+                            <div class="ai-prop-rgb">rgb(156, 0, 93)</div>
+                            <div class="ai-prop-alpha-col">30%</div>
+                            <div class="ai-prop-last">rgba(156, 0, 93, 0.3)</div>
+                        </div>
+                        <div class="ai-prop-row" data-panel="l3" data-idx="1">
+                            <div class="ai-prop-swatch-sm"><div class="checker-mini"></div><div class="swatch-fill" style="background:rgba(156,0,93,0.6);"></div></div>
+                            <div class="ai-prop-pos">50%</div>
+                            <div class="ai-prop-hex">#9c005d</div>
+                            <div class="ai-prop-rgb">rgb(156, 0, 93)</div>
+                            <div class="ai-prop-alpha-col">60%</div>
+                            <div class="ai-prop-last">rgba(156, 0, 93, 0.6)</div>
+                        </div>
+                        <div class="ai-prop-row" data-panel="l3" data-idx="2">
+                            <div class="ai-prop-swatch-sm"><div class="checker-mini"></div><div class="swatch-fill" style="background:rgba(13,2,9,0.9);"></div></div>
+                            <div class="ai-prop-pos">100%</div>
+                            <div class="ai-prop-hex">#0d0209</div>
+                            <div class="ai-prop-rgb">rgb(13, 2, 9)</div>
+                            <div class="ai-prop-alpha-col">90%</div>
+                            <div class="ai-prop-last">rgba(13, 2, 9, 0.9)</div>
                         </div>
                     </div>
                 </div>
@@ -936,51 +983,35 @@ heroTime++; requestAnimationFrame(animateHeroWaves);</div>
         });
     });
 
-    /* ─── Gradient Stop Selection ─────────────────── */
-    const stopData = {
-        l1: [
-            { name: 'Deep Magenta',   hex: '#9c005d', rgb: 'rgb(156, 0, 93)',  alpha: '100%',                              alphaFull: 'rgba(156, 0, 93, 1.0)', color: '#9c005d',            pos: '0%'   },
-            { name: 'Midnight Purple',hex: '#1a0512', rgb: 'rgb(26, 5, 18)',   alpha: '100%',                              alphaFull: 'rgba(26, 5, 18, 1.0)',  color: '#1a0512',            pos: '50%'  },
-            { name: 'Obsidian',       hex: '#0d0209', rgb: 'rgb(13, 2, 9)',    alpha: '100%',                              alphaFull: 'rgba(13, 2, 9, 1.0)',   color: '#0d0209',            pos: '100%' },
-        ],
-        l3: [
-            { name: 'Deep Magenta (30%)', hex: '#9c005d', rgb: 'rgb(156, 0, 93)', alpha: '<span class="hl">30%</span>', alphaFull: 'rgba(156, 0, 93, <span class="hl">0.3</span>)', color: 'rgba(156,0,93,0.3)', pos: '0%'   },
-            { name: 'Deep Magenta (60%)', hex: '#9c005d', rgb: 'rgb(156, 0, 93)', alpha: '<span class="hl">60%</span>', alphaFull: 'rgba(156, 0, 93, <span class="hl">0.6</span>)', color: 'rgba(156,0,93,0.6)', pos: '50%'  },
-            { name: 'Obsidian (90%)',     hex: '#0d0209', rgb: 'rgb(13, 2, 9)',   alpha: '<span class="hl">90%</span>', alphaFull: 'rgba(13, 2, 9, <span class="hl">0.9</span>)',   color: 'rgba(13,2,9,0.9)',   pos: '100%' },
-        ]
-    };
+    /* ─── Gradient Stop Toggle (single-select per panel) ── */
+    function toggleStop(panel, idx) {
+        const handles = document.querySelectorAll(
+            `#panel-${panel} [data-panel="${panel}"][data-idx="${idx}"]`
+        );
+        const isAlreadySelected = handles[0]?.classList.contains('selected');
 
-    function selectStop(panel, idx) {
-        // Deselect all stops in this panel
-        document.querySelectorAll(`#panel-${panel} .ai-stop`).forEach(s => s.classList.remove('selected'));
-        document.querySelectorAll(`#panel-${panel} .ai-op-stop`).forEach(s => s.classList.remove('selected'));
+        // Clear all selections in this panel
+        document.querySelectorAll(`#panel-${panel} .ai-stop, #panel-${panel} .ai-op-stop`)
+            .forEach(el => el.classList.remove('selected'));
+        document.querySelectorAll(`.ai-prop-row[data-panel="${panel}"]`)
+            .forEach(el => el.classList.remove('highlighted'));
 
-        // Select clicked ones (by index, sync color + opacity)
-        document.querySelectorAll(`#panel-${panel} .ai-stop[data-idx="${idx}"]`).forEach(s => s.classList.add('selected'));
-        document.querySelectorAll(`#panel-${panel} .ai-op-stop[data-idx="${idx}"]`).forEach(s => s.classList.add('selected'));
-
-        // Update properties panel
-        const d = stopData[panel][idx];
-        document.getElementById(`${panel}-swatch`).style.background = d.color;
-        document.getElementById(`${panel}-name`).textContent   = d.name;
-        document.getElementById(`${panel}-hex`).textContent    = d.hex;
-        document.getElementById(`${panel}-rgb`).textContent    = d.rgb;
-        document.getElementById(`${panel}-pos`).textContent    = d.pos;
-
-        // Alpha field — may contain HTML spans
-        const alphaEl = document.getElementById(`${panel}-alpha`);
-        if (d.alphaFull.includes('<')) {
-            alphaEl.innerHTML = d.alpha + ' · ' + d.alphaFull;
-        } else {
-            alphaEl.textContent = d.alpha;
+        // If it wasn't selected, select it now; if it was, leave cleared (toggle off)
+        if (!isAlreadySelected) {
+            handles.forEach(el => el.classList.add('selected'));
+            const row = document.querySelector(`.ai-prop-row[data-panel="${panel}"][data-idx="${idx}"]`);
+            if (row) row.classList.add('highlighted');
         }
     }
 
-    // Bind all stop clicks
-    document.querySelectorAll('.ai-stop[data-panel], .ai-op-stop[data-panel]').forEach(stop => {
-        stop.addEventListener('click', () => {
-            selectStop(stop.dataset.panel, parseInt(stop.dataset.idx, 10));
-        });
+    // Stop handles (color + opacity tracks)
+    document.querySelectorAll('.ai-stop[data-panel], .ai-op-stop[data-panel]').forEach(el => {
+        el.addEventListener('click', () => toggleStop(el.dataset.panel, el.dataset.idx));
+    });
+
+    // Prop rows also trigger the same toggle
+    document.querySelectorAll('.ai-prop-row[data-panel]').forEach(el => {
+        el.addEventListener('click', () => toggleStop(el.dataset.panel, el.dataset.idx));
     });
 
     /* ─── Hero Canvas Wave Preview ────────────────── */
