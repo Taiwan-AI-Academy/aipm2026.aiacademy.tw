@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AIPM Hero Color Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --obsidian: #0d0209;
+      --deep-purple: #9c005d;
+      --mid-purple: #1a0512;
+      --gold: #bda16c;
+      --gold-light: #d4b88a;
+      --overlay-1: rgba(156, 0, 93, 0.3);
+      --overlay-2: rgba(156, 0, 93, 0.6);
+      --overlay-3: rgba(13, 2, 9, 0.9);
+      --text-body: rgba(255, 255, 255, 0.85);
+      --text-muted: rgba(189, 161, 108, 0.7);
+    }
+
+    body {
+      font-family: "Noto Sans TC", sans-serif;
+      background: #0d0209;
+      color: #ffffff;
+    }
+
+    .glass-card {
+      background: rgba(40, 5, 25, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    .swatch {
+      width: 72px;
+      height: 72px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .hero-preview {
+      position: relative;
+      height: 520px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(189, 161, 108, 0.2);
+      background: radial-gradient(circle at center, var(--deep-purple) 0%, var(--mid-purple) 50%, var(--obsidian) 100%);
+    }
+
+    .layer {
+      position: absolute;
+      inset: 0;
+    }
+
+    .layer-base {
+      background: radial-gradient(circle at center, var(--deep-purple) 0%, var(--mid-purple) 50%, var(--obsidian) 100%);
+    }
+
+    .layer-overlay {
+      background: radial-gradient(circle at center, var(--overlay-1) 0%, var(--overlay-2) 50%, var(--overlay-3) 100%);
+    }
+
+    .layer-label {
+      font-size: 12px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    .chip {
+      background: rgba(189, 161, 108, 0.15);
+      color: var(--gold);
+      font-size: 12px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    }
+
+    .toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <header class="py-14 px-6 text-center">
+    <p class="text-sm tracking-[0.3em] uppercase mb-3" style="color: var(--text-muted);">AIPM 2026</p>
+    <h1 class="text-4xl md:text-5xl font-bold mb-3">Hero Color & Gradient Guide</h1>
+    <p class="text-lg" style="color: var(--text-body);">以 Hero 的底層放射漸層 + Overlay + Canvas 線條做色彩結構。</p>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-24 space-y-12">
+    <section class="glass-card rounded-2xl p-6 md:p-8">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-2xl font-bold">01 色票</h2>
+        <span class="chip">Hero Palette</span>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div class="flex flex-col items-start gap-2">
+          <div class="swatch" style="background: #0d0209;"></div>
+          <div class="text-sm font-semibold">Obsidian</div>
+          <div class="text-xs" style="color: var(--text-muted);">#0d0209</div>
+        </div>
+        <div class="flex flex-col items-start gap-2">
+          <div class="swatch" style="background: #1a0512;"></div>
+          <div class="text-sm font-semibold">Mid Purple</div>
+          <div class="text-xs" style="color: var(--text-muted);">#1a0512</div>
+        </div>
+        <div class="flex flex-col items-start gap-2">
+          <div class="swatch" style="background: #9c005d;"></div>
+          <div class="text-sm font-semibold">Deep Purple</div>
+          <div class="text-xs" style="color: var(--text-muted);">#9c005d</div>
+        </div>
+        <div class="flex flex-col items-start gap-2">
+          <div class="swatch" style="background: #bda16c;"></div>
+          <div class="text-sm font-semibold">Gold</div>
+          <div class="text-xs" style="color: var(--text-muted);">#bda16c</div>
+        </div>
+        <div class="flex flex-col items-start gap-2">
+          <div class="swatch" style="background: #d4b88a;"></div>
+          <div class="text-sm font-semibold">Gold Light</div>
+          <div class="text-xs" style="color: var(--text-muted);">#d4b88a</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-card rounded-2xl p-6 md:p-8 space-y-6">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-bold">02 漸層方式</h2>
+        <span class="chip">Radial + Canvas</span>
+      </div>
+      <div class="space-y-4 text-sm leading-relaxed" style="color: var(--text-body);">
+        <div>
+          <div class="layer-label mb-2">Base Radial Gradient</div>
+          <div class="glass-card rounded-lg p-4 font-mono text-xs">
+            radial-gradient(circle at center, #9c005d 0%, #1a0512 50%, #0d0209 100%)
+          </div>
+        </div>
+        <div>
+          <div class="layer-label mb-2">Overlay Radial Gradient</div>
+          <div class="glass-card rounded-lg p-4 font-mono text-xs">
+            radial-gradient(circle at center, rgba(156, 0, 93, 0.3) 0%, rgba(156, 0, 93, 0.6) 50%, rgba(13, 2, 9, 0.9) 100%)
+          </div>
+        </div>
+        <div>
+          <div class="layer-label mb-2">Canvas Line Gradient (Stroke)</div>
+          <div class="glass-card rounded-lg p-4 font-mono text-xs">
+            linear-gradient(0deg, rgba(189,161,108,α), rgba(212,184,138,α)) with per-line opacity
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-card rounded-2xl p-6 md:p-8 space-y-6">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-bold">03 Render 方式</h2>
+        <span class="chip">Stacked Layers</span>
+      </div>
+      <div class="text-sm leading-relaxed" style="color: var(--text-body);">
+        Hero 疊三層：底層為 body/hero 的放射漸層背景，其上覆蓋一層較高對比的放射 overlay，最上層是 canvas 畫的波浪線條。
+        Canvas 線條每條帶有線性漸層，並依 y 位置調整透明度，產生中心較亮、上下較暗的視覺。
+      </div>
+      <div class="grid md:grid-cols-3 gap-4 text-sm">
+        <div class="glass-card rounded-lg p-4">
+          <div class="layer-label mb-2">Layer 1</div>
+          <div class="font-semibold">Base Radial</div>
+          <div style="color: var(--text-muted);">hero 或 body 背景</div>
+        </div>
+        <div class="glass-card rounded-lg p-4">
+          <div class="layer-label mb-2">Layer 2</div>
+          <div class="font-semibold">Overlay Radial</div>
+          <div style="color: var(--text-muted);">提升中心亮度、壓暗邊緣</div>
+        </div>
+        <div class="glass-card rounded-lg p-4">
+          <div class="layer-label mb-2">Layer 3</div>
+          <div class="font-semibold">Canvas Lines</div>
+          <div style="color: var(--text-muted);">金色線條細節與動態</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="glass-card rounded-2xl p-6 md:p-8 space-y-6">
+      <div class="flex items-center justify-between">
+        <h2 class="text-2xl font-bold">04 互動檢視</h2>
+        <span class="chip">Layer Toggle</span>
+      </div>
+      <div class="flex flex-wrap gap-6">
+        <label class="toggle text-sm">
+          <input id="toggle-base" type="checkbox" checked />
+          Base Radial
+        </label>
+        <label class="toggle text-sm">
+          <input id="toggle-overlay" type="checkbox" checked />
+          Overlay Radial
+        </label>
+        <label class="toggle text-sm">
+          <input id="toggle-canvas" type="checkbox" checked />
+          Canvas Lines
+        </label>
+      </div>
+      <div class="hero-preview">
+        <div id="layer-base" class="layer layer-base"></div>
+        <canvas id="layer-canvas" class="layer"></canvas>
+        <div id="layer-overlay" class="layer layer-overlay"></div>
+        <div class="absolute bottom-6 left-6 text-sm" style="color: var(--text-body);">
+          Hero Preview
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const baseToggle = document.getElementById("toggle-base");
+    const overlayToggle = document.getElementById("toggle-overlay");
+    const canvasToggle = document.getElementById("toggle-canvas");
+    const baseLayer = document.getElementById("layer-base");
+    const overlayLayer = document.getElementById("layer-overlay");
+    const canvasLayer = document.getElementById("layer-canvas");
+
+    function syncLayers() {
+      baseLayer.style.display = baseToggle.checked ? "block" : "none";
+      overlayLayer.style.display = overlayToggle.checked ? "block" : "none";
+      canvasLayer.style.display = canvasToggle.checked ? "block" : "none";
+    }
+
+    baseToggle.addEventListener("change", syncLayers);
+    overlayToggle.addEventListener("change", syncLayers);
+    canvasToggle.addEventListener("change", syncLayers);
+
+    function drawCanvasLines() {
+      const ctx = canvasLayer.getContext("2d");
+      if (!ctx) return;
+
+      const { width, height } = canvasLayer.getBoundingClientRect();
+      canvasLayer.width = Math.max(1, Math.floor(width));
+      canvasLayer.height = Math.max(1, Math.floor(height));
+
+      const LINE_COUNT = 52;
+      const BASE_AMPLITUDE = 85;
+      const FREQUENCY = 0.0024;
+      const time = Date.now() * 0.0006;
+
+      ctx.clearRect(0, 0, canvasLayer.width, canvasLayer.height);
+
+      for (let i = 0; i < LINE_COUNT; i++) {
+        const phaseOffset = i * 0.12;
+        const verticalSpacing = canvasLayer.height / (LINE_COUNT + 1);
+        const baseY = verticalSpacing * (i + 1);
+        ctx.beginPath();
+
+        for (let x = 0; x <= canvasLayer.width; x += 2) {
+          const wave1 = Math.sin(x * FREQUENCY + time + phaseOffset) * BASE_AMPLITUDE;
+          const wave2 = Math.sin(x * FREQUENCY * 2.1 + time * 0.7 + phaseOffset * 1.3) * BASE_AMPLITUDE * 0.3;
+          const wave3 = Math.sin(x * FREQUENCY * 0.5 + time * 1.2 - phaseOffset * 0.5) * BASE_AMPLITUDE * 0.2;
+          const y = baseY + wave1 + wave2 + wave3;
+          if (x === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+
+        const distFromCenter = Math.abs(i - LINE_COUNT / 2) / (LINE_COUNT / 2);
+        const opacity = 0.25 - distFromCenter * 0.12;
+
+        const gradient = ctx.createLinearGradient(0, 0, canvasLayer.width, 0);
+        if (i % 2 === 0) {
+          gradient.addColorStop(0, `rgba(189, 161, 108, ${opacity * 0.3})`);
+          gradient.addColorStop(0.3, `rgba(189, 161, 108, ${opacity})`);
+          gradient.addColorStop(0.7, `rgba(212, 184, 138, ${opacity})`);
+          gradient.addColorStop(1, `rgba(189, 161, 108, ${opacity * 0.3})`);
+        } else {
+          gradient.addColorStop(0, `rgba(212, 184, 138, ${opacity * 0.3})`);
+          gradient.addColorStop(0.3, `rgba(212, 184, 138, ${opacity})`);
+          gradient.addColorStop(0.7, `rgba(189, 161, 108, ${opacity})`);
+          gradient.addColorStop(1, `rgba(212, 184, 138, ${opacity * 0.3})`);
+        }
+
+        ctx.strokeStyle = gradient;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+    }
+
+    window.addEventListener("resize", drawCanvasLines);
+    syncLayers();
+    drawCanvasLines();
+    setInterval(drawCanvasLines, 100);
+  </script>
+</body>
+</html>

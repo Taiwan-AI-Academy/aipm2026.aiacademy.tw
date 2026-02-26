@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero 漸層色彩指引 | 2026 AI PM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --obsidian:      #0d0209;
+            --midnight:      #1a0512;
+            --magenta:       #9c005d;
+            --gold:          #bda16c;
+            --gold-light:    #d4b88a;
+            --gold-dim:      #a8905a;
+            --scrollbar-mid: #55334a;
+            --radius: 10px;
+            --mono: 'JetBrains Mono', monospace;
+            --sans: 'Noto Sans TC', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: var(--sans);
+            background: #0d0209;
+            color: rgba(255,255,255,0.85);
+            min-height: 100vh;
+            line-height: 1.7;
+        }
+
+        ::-webkit-scrollbar { width: 7px; }
+        ::-webkit-scrollbar-track { background: var(--obsidian); }
+        ::-webkit-scrollbar-thumb { background: var(--scrollbar-mid); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* ── Page Header ─────────────────────────────── */
+        .page-header {
+            background: rgba(13,2,9,0.95);
+            border-bottom: 1px solid rgba(189,161,108,0.2);
+            padding: 20px 0;
+            position: sticky; top: 0; z-index: 100;
+            backdrop-filter: blur(16px);
+        }
+        .page-header .inner { display: flex; align-items: center; justify-content: space-between; }
+        .page-header h1 { font-size: 15px; font-weight: 600; letter-spacing: 0.12em; color: var(--gold); text-transform: uppercase; }
+        .page-header .back-link { font-size: 13px; color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+        .page-header .back-link:hover { color: var(--gold); }
+
+        /* ── Sections ─────────────────────────────────── */
+        .section { padding: 64px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .section:last-child { border-bottom: none; }
+        .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
+        .section-title { font-size: 28px; font-weight: 700; color: #fff; margin-bottom: 12px; }
+        .section-desc { font-size: 15px; color: rgba(255,255,255,0.55); max-width: 680px; margin-bottom: 40px; }
+
+        /* ── Hero Preview ─────────────────────────────── */
+        .preview-wrapper {
+            position: relative; width: 100%; height: 420px;
+            border-radius: var(--radius); overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+        #layer-body {
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at center, #9c005d 0%, #1a0512 50%, #0d0209 100%);
+            transition: opacity 0.4s ease;
+        }
+        #hero-canvas-preview {
+            position: absolute; inset: 0; width: 100%; height: 100%;
+            pointer-events: none; transition: opacity 0.4s ease;
+        }
+        #layer-overlay {
+            position: absolute; inset: 0;
+            background: radial-gradient(circle at center, rgba(156,0,93,0.3) 0%, rgba(156,0,93,0.6) 50%, rgba(13,2,9,0.9) 100%);
+            transition: opacity 0.4s ease;
+        }
+        #layer-content {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            flex-direction: column; gap: 12px;
+            transition: opacity 0.4s ease; pointer-events: none;
+        }
+        .mock-logo { font-size: 36px; font-weight: 700; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; text-shadow: 0 0 40px rgba(189,161,108,0.4); }
+        .mock-sub { font-size: 14px; color: rgba(255,255,255,0.7); letter-spacing: 0.12em; }
+        .mock-card { background: rgba(40,5,25,0.4); border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(12px); border-radius: 8px; padding: 10px 24px; font-size: 13px; color: rgba(255,255,255,0.6); margin-top: 6px; }
+
+        /* ── Layer Controls ───────────────────────────── */
+        .layer-controls { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+
+        .layer-toggle {
+            display: flex; align-items: center; gap: 10px;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px; padding: 10px 16px;
+            cursor: pointer; user-select: none;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .layer-toggle:hover { border-color: rgba(189,161,108,0.4); background: rgba(255,255,255,0.07); }
+        .toggle-pill {
+            width: 38px; height: 20px;
+            background: rgba(255,255,255,0.12);
+            border-radius: 10px; position: relative;
+            transition: background 0.25s; flex-shrink: 0;
+        }
+        .toggle-pill::after {
+            content: ''; position: absolute; left: 3px; top: 3px;
+            width: 14px; height: 14px; background: rgba(255,255,255,0.4); border-radius: 50%;
+            transition: transform 0.25s, background 0.25s;
+        }
+        .layer-toggle.active .toggle-pill { background: var(--gold); }
+        .layer-toggle.active .toggle-pill::after { transform: translateX(18px); background: var(--obsidian); }
+        .toggle-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+        .toggle-label-group { line-height: 1.3; }
+        .toggle-name { font-size: 13px; font-weight: 600; color: #fff; }
+        .toggle-hint { font-size: 11px; color: rgba(255,255,255,0.4); }
+
+        /* ── Color Palette ────────────────────────────── */
+        .palette-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
+        .swatch-card { border-radius: var(--radius); overflow: hidden; border: 1px solid rgba(255,255,255,0.08); }
+        .swatch-color { height: 80px; position: relative; }
+        .swatch-color .overlay-badge {
+            position: absolute; bottom: 8px; right: 8px;
+            font-size: 10px; padding: 2px 6px; border-radius: 4px;
+            background: rgba(0,0,0,0.5); color: rgba(255,255,255,0.7);
+            font-family: var(--mono);
+        }
+        .swatch-meta { background: rgba(255,255,255,0.04); padding: 12px 14px; }
+        .swatch-name { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .swatch-hex { font-family: var(--mono); font-size: 11px; color: var(--gold); line-height: 1.7; }
+        .swatch-role { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 4px; line-height: 1.5; }
+
+        /* ── AI/PS Gradient Panel ─────────────────────── */
+        .grad-panels { display: flex; flex-direction: column; gap: 40px; }
+
+        .ai-panel {
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            overflow: hidden;
+            background: #161616;
+        }
+
+        /* Panel header bar — like PS title bar */
+        .ai-panel-header {
+            background: #242424;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 10px 16px;
+            display: flex; align-items: center; justify-content: space-between; gap: 12px;
+        }
+        .ai-panel-title {
+            font-size: 13px; font-weight: 700; color: #ddd; letter-spacing: 0.04em;
+        }
+        .ai-panel-badges { display: flex; gap: 6px; flex-wrap: wrap; }
+        .ai-badge {
+            font-size: 10px; padding: 2px 8px; border-radius: 3px;
+            background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.45);
+            font-family: var(--mono); border: 1px solid rgba(255,255,255,0.1);
+        }
+        .ai-badge.gold { background: rgba(189,161,108,0.12); color: var(--gold); border-color: rgba(189,161,108,0.25); }
+
+        /* Inner editor area */
+        .ai-editor { padding: 20px; }
+
+        /* Axis row */
+        .ai-axis-labels {
+            display: flex; justify-content: space-between;
+            font-size: 10px; color: rgba(255,255,255,0.25);
+            font-family: var(--mono); margin-bottom: 6px;
+            padding: 0 1px;
+        }
+
+        /* Opacity stop track (above bar, only for L3) */
+        .ai-opacity-track {
+            position: relative; height: 26px; margin-bottom: 2px;
+        }
+
+        /* Gradient bar */
+        .ai-grad-bar {
+            height: 28px;
+            border-radius: 3px;
+            border: 1px solid rgba(255,255,255,0.12);
+            position: relative;
+        }
+
+        /* Checkerboard (for transparent gradients) */
+        .ai-grad-bar.transparent-bg {
+            background-image:
+                linear-gradient(45deg, #555 25%, transparent 25%),
+                linear-gradient(-45deg, #555 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #555 75%),
+                linear-gradient(-45deg, transparent 75%, #555 75%);
+            background-size: 10px 10px;
+            background-position: 0 0, 0 5px, 5px -5px, -5px 0;
+            background-color: #333;
+        }
+        .ai-grad-bar .grad-overlay {
+            position: absolute; inset: 0; border-radius: 2px;
+        }
+
+        /* Color stops track (below bar) */
+        .ai-stops-track {
+            position: relative; height: 30px; margin-top: 2px;
+        }
+
+        /* Single stop handle */
+        .ai-stop {
+            position: absolute; bottom: 0;
+            transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center;
+            cursor: pointer;
+            transition: filter 0.15s;
+        }
+        .ai-stop:hover { filter: brightness(1.2); }
+
+        /* The upward-pointing triangle */
+        .ai-stop-arrow {
+            width: 0; height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-bottom: 7px solid rgba(200,200,200,0.35);
+            transition: border-bottom-color 0.15s;
+            margin-bottom: -1px;
+        }
+        .ai-stop.selected .ai-stop-arrow { border-bottom-color: #fff; }
+
+        /* The stop color box */
+        .ai-stop-box {
+            width: 14px; height: 14px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 2px;
+        }
+        .ai-stop.selected .ai-stop-box {
+            border-color: #fff;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.8);
+        }
+
+        /* Opacity stop handle (downward-pointing triangle, above bar) */
+        .ai-op-stop {
+            position: absolute; top: 0;
+            transform: translateX(-50%);
+            display: flex; flex-direction: column; align-items: center;
+            cursor: pointer;
+        }
+        .ai-op-box {
+            width: 14px; height: 14px;
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 2px;
+            background: linear-gradient(to bottom, #fff, #888);
+        }
+        .ai-op-arrow {
+            width: 0; height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 7px solid rgba(200,200,200,0.35);
+            margin-top: -1px;
+        }
+        .ai-op-stop.selected .ai-op-arrow { border-top-color: #fff; }
+        .ai-op-stop.selected .ai-op-box { border-color: #fff; box-shadow: 0 0 0 1px rgba(0,0,0,0.8); }
+
+        /* Position ruler */
+        .ai-ruler {
+            position: relative; height: 18px; margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.07);
+        }
+        .ai-ruler-tick {
+            position: absolute; transform: translateX(-50%);
+            font-size: 9px; color: rgba(255,255,255,0.2); font-family: var(--mono);
+            top: 4px;
+        }
+
+        /* Stop Properties panel */
+        .ai-props {
+            display: flex; gap: 20px;
+            margin-top: 20px;
+            padding: 16px;
+            background: #1e1e1e;
+            border-radius: 6px;
+            border: 1px solid rgba(255,255,255,0.07);
+            min-height: 90px;
+        }
+
+        .ai-props-swatch-wrap {
+            position: relative; width: 72px; height: 72px;
+            border-radius: 5px; overflow: hidden; flex-shrink: 0;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        .ai-props-checker {
+            position: absolute; inset: 0;
+            background-image:
+                linear-gradient(45deg, #666 25%, transparent 25%),
+                linear-gradient(-45deg, #666 25%, transparent 25%),
+                linear-gradient(45deg, transparent 75%, #666 75%),
+                linear-gradient(-45deg, transparent 75%, #666 75%);
+            background-size: 12px 12px;
+            background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+            background-color: #444;
+        }
+        .ai-props-swatch-color { position: absolute; inset: 0; }
+
+        .ai-props-data {
+            flex: 1;
+            display: grid;
+            grid-template-columns: 72px 1fr;
+            column-gap: 14px; row-gap: 5px;
+            align-content: center;
+        }
+        .prop-k {
+            font-size: 10px; color: rgba(255,255,255,0.35);
+            text-transform: uppercase; letter-spacing: 0.1em;
+            font-family: var(--mono); padding: 1px 0; align-self: center;
+        }
+        .prop-v {
+            font-size: 12px; color: rgba(255,255,255,0.8);
+            font-family: var(--mono); padding: 1px 0; align-self: center;
+        }
+        .prop-v .hl { color: var(--gold); }
+
+        /* CSS code section */
+        .ai-code-section {
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        /* Radial gradient 2D preview (original style) */
+        .ai-grad-preview {
+            height: 160px;
+            position: relative;
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .ai-grad-preview .preview-stop-labels {
+            position: absolute; inset: 0;
+            display: flex; align-items: flex-end;
+            padding: 10px 14px; gap: 0;
+        }
+        .preview-stop-label {
+            font-size: 10px; font-family: var(--mono);
+            color: rgba(255,255,255,0.8);
+            background: rgba(0,0,0,0.5);
+            padding: 2px 7px; border-radius: 4px;
+            white-space: nowrap;
+        }
+        .preview-stop-label.end { margin-left: auto; }
+
+        .ai-code-label {
+            font-size: 10px; font-family: var(--mono);
+            color: rgba(255,255,255,0.25); letter-spacing: 0.1em;
+            text-transform: uppercase;
+            padding: 10px 20px 6px;
+        }
+        .code-block {
+            font-family: var(--mono); font-size: 12px;
+            background: rgba(0,0,0,0.35);
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding: 14px 20px;
+            color: rgba(255,255,255,0.7);
+            overflow-x: auto; white-space: pre; line-height: 1.85;
+        }
+        .ck  { color: #c792ea; }
+        .cfn { color: #82aaff; }
+        .cs  { color: #c3e88d; }
+        .cn  { color: #f78c6c; }
+        .cm  { color: rgba(255,255,255,0.28); font-style: italic; }
+
+        /* ── Wave Spec ──────────────────────────────────── */
+        .spec-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 640px) { .spec-grid { grid-template-columns: 1fr; } }
+        .spec-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 8px; padding: 16px 18px; }
+        .spec-key { font-size: 11px; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+        .spec-val { font-size: 14px; font-family: var(--mono); color: rgba(255,255,255,0.8); }
+        .spec-val span { color: var(--gold); }
+
+        /* ── Render Pipeline ────────────────────────────── */
+        .pipeline { display: flex; flex-direction: column; }
+        .pipe-step { display: flex; align-items: stretch; }
+        .pipe-left { width: 130px; flex-shrink: 0; display: flex; flex-direction: column; align-items: flex-end; padding-right: 20px; position: relative; }
+        .pipe-left::after { content: ''; position: absolute; right: -1px; top: 0; bottom: 0; width: 2px; background: rgba(255,255,255,0.08); }
+        .pipe-step:not(:last-child) .pipe-left::before { content: ''; position: absolute; right: -5px; bottom: 0; width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.12); z-index: 1; }
+        .pipe-z { font-size: 10px; font-family: var(--mono); color: var(--gold); font-weight: 600; padding: 24px 0 0; }
+        .pipe-body { flex: 1; padding: 16px 0 32px 20px; }
+        .pipe-title { font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+        .pipe-desc { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 10px; }
+        .pipe-tag { display: inline-block; font-size: 10px; padding: 1px 7px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.15); color: rgba(255,255,255,0.5); font-family: var(--mono); }
+    </style>
+</head>
+<body>
+
+<header class="page-header">
+    <div class="container inner">
+        <h1>Hero 漸層色彩指引</h1>
+        <a href="index.html" class="back-link">← 回主頁</a>
+    </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  § 1  INTERACTIVE PREVIEW                          -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-label">Interactive Preview</div>
+        <div class="section-title">Hero 圖層堆疊預覽</div>
+        <div class="section-desc">Hero 區塊由 4 個圖層由下至上疊加而成。點選下方開關切換各層顯示，觀察每層對最終畫面的影響。</div>
+
+        <div class="preview-wrapper">
+            <div id="layer-body"></div>
+            <canvas id="hero-canvas-preview"></canvas>
+            <div id="layer-overlay"></div>
+            <div id="layer-content">
+                <div class="mock-logo">AI PM 2026</div>
+                <div class="mock-sub">台灣人工智慧學校 · 每週六 09:00–17:00</div>
+                <div class="mock-card">2026.04.11 – 05.30 ｜ 共 8 週</div>
+            </div>
+        </div>
+
+        <div class="layer-controls">
+            <div class="layer-toggle active" data-target="layer-body">
+                <div class="toggle-pill"></div>
+                <div class="toggle-dot" style="background:#9c005d;"></div>
+                <div class="toggle-label-group">
+                    <div class="toggle-name">L1 · Body 背景</div>
+                    <div class="toggle-hint">radial-gradient (fixed)</div>
+                </div>
+            </div>
+            <div class="layer-toggle active" data-target="hero-canvas-preview">
+                <div class="toggle-pill"></div>
+                <div class="toggle-dot" style="background:#bda16c;"></div>
+                <div class="toggle-label-group">
+                    <div class="toggle-name">L2 · Canvas 波紋</div>
+                    <div class="toggle-hint">60 條 sin wave，金色漸層</div>
+                </div>
+            </div>
+            <div class="layer-toggle active" data-target="layer-overlay">
+                <div class="toggle-pill"></div>
+                <div class="toggle-dot" style="background:rgba(156,0,93,0.8); border:1px solid rgba(255,255,255,0.2);"></div>
+                <div class="toggle-label-group">
+                    <div class="toggle-name">L3 · Hero 深度遮罩</div>
+                    <div class="toggle-hint">radial-gradient overlay</div>
+                </div>
+            </div>
+            <div class="layer-toggle active" data-target="layer-content">
+                <div class="toggle-pill"></div>
+                <div class="toggle-dot" style="background:rgba(255,255,255,0.25); border:1px solid rgba(255,255,255,0.3);"></div>
+                <div class="toggle-label-group">
+                    <div class="toggle-name">L4 · 內容文字</div>
+                    <div class="toggle-hint">Logo、字卡（示意）</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  § 2  COLOR PALETTE                               -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-label">Color Palette</div>
+        <div class="section-title">設計系統色票</div>
+        <div class="section-desc">Hero 使用的所有顏色值，涵蓋 Tailwind config 命名色與 Canvas 動畫色。</div>
+
+        <div class="palette-grid">
+
+            <div class="swatch-card">
+                <div class="swatch-color" style="background:#0d0209;">
+                    <span class="overlay-badge">#0d0209</span>
+                </div>
+                <div class="swatch-meta">
+                    <div class="swatch-name">Obsidian</div>
+                    <div class="swatch-hex">#0d0209<br>rgb(13, 2, 9)</div>
+                    <div class="swatch-role">頁面底色、body 背景止點、Navbar 背景基底；整體深色調的錨點</div>
+                </div>
+            </div>
+
+            <div class="swatch-card">
+                <div class="swatch-color" style="background:#1a0512;">
+                    <span class="overlay-badge">#1a0512</span>
+                </div>
+                <div class="swatch-meta">
+                    <div class="swatch-name">Midnight Purple</div>
+                    <div class="swatch-hex">#1a0512<br>rgb(26, 5, 18)</div>
+                    <div class="swatch-role">Body radial-gradient 中間過渡色，讓 Obsidian → Magenta 更柔和</div>
+                </div>
+            </div>
+
+            <div class="swatch-card">
+                <div class="swatch-color" style="background:#9c005d;">
+                    <span class="overlay-badge">#9c005d</span>
+                </div>
+                <div class="swatch-meta">
+                    <div class="swatch-name">Deep Magenta</div>
+                    <div class="swatch-hex">#9c005d<br>rgb(156, 0, 93)</div>
+                    <div class="swatch-role">Tailwind: <code>deepBlue</code>。Body 漸層圓心色；Hero overlay 的半透明疊加色</div>
+                </div>
+            </div>
+
+            <div class="swatch-card">
+                <div class="swatch-color" style="background:#bda16c;">
+                    <span class="overlay-badge">#bda16c</span>
+                </div>
+                <div class="swatch-meta">
+                    <div class="swatch-name">Prestige Gold</div>
+                    <div class="swatch-hex">#bda16c<br>rgb(189, 161, 108)</div>
+                    <div class="swatch-role">Tailwind: <code>prestigeGold / nobleGold / techBlue</code>。Canvas 波紋主色；按鈕、accent、邊框</div>
+                </div>
+            </div>
+
+            <div class="swatch-card">
+                <div class="swatch-color" style="background:#d4b88a;">
+                    <span class="overlay-badge">#d4b88a</span>
+                </div>
+                <div class="swatch-meta">
+                    <div class="swatch-name">Noble Gold (Light)</div>
+                    <div class="swatch-hex">#d4b88a<br>rgb(212, 184, 138)</div>
+                    <div class="swatch-role">Canvas 波紋奇數行的高光色，與 Prestige Gold 交替增加波浪立體感</div>
+                </div>
+            </div>
+
+            <div class="swatch-card">
+                <div class="swatch-color" style="background:#a8905a;">
+                    <span class="overlay-badge">#a8905a</span>
+                </div>
+                <div class="swatch-meta">
+                    <div class="swatch-name">Gold Hover</div>
+                    <div class="swatch-hex">#a8905a<br>rgb(168, 144, 90)</div>
+                    <div class="swatch-role">Tailwind: <code>prestigeGoldHover</code>。按鈕 hover 狀態，比 Prestige Gold 深約 10%</div>
+                </div>
+            </div>
+
+            <div class="swatch-card">
+                <div class="swatch-color" style="background:#55334a;">
+                    <span class="overlay-badge">#55334a</span>
+                </div>
+                <div class="swatch-meta">
+                    <div class="swatch-name">Scrollbar Mid</div>
+                    <div class="swatch-hex">#55334a<br>rgb(85, 51, 74)</div>
+                    <div class="swatch-role">捲軸 thumb 顏色；介於 Midnight 與 Magenta 之間的中性紫紅</div>
+                </div>
+            </div>
+
+            <div class="swatch-card">
+                <div class="swatch-color" style="background:rgba(40,5,25,0.4); position:relative;">
+                    <div style="position:absolute;inset:0;background-image:linear-gradient(45deg,#444 25%,transparent 25%),linear-gradient(-45deg,#444 25%,transparent 25%),linear-gradient(45deg,transparent 75%,#444 75%),linear-gradient(-45deg,transparent 75%,#444 75%);background-size:8px 8px;background-position:0 0,0 4px,4px -4px,-4px 0;background-color:#333;z-index:0;"></div>
+                    <div style="position:absolute;inset:0;background:rgba(40,5,25,0.4);z-index:1;"></div>
+                    <span class="overlay-badge" style="z-index:2;position:absolute;bottom:8px;right:8px;">rgba(40,5,25,.4)</span>
+                </div>
+                <div class="swatch-meta">
+                    <div class="swatch-name">Glass Background</div>
+                    <div class="swatch-hex">rgba(40, 5, 25, 0.4)<br>rgb(40, 5, 25) · α 40%</div>
+                    <div class="swatch-role">Glassmorphism 卡片底色；搭配 backdrop-blur(12px)</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  § 3  GRADIENT DETAILS — PS/AI Style               -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-label">Gradient Details</div>
+        <div class="section-title">漸層詳解</div>
+        <div class="section-desc">點選色票停駐點查看該點的完整色值。圖示以 center → edge 方向呈現 radial-gradient 的截面。</div>
+
+        <div class="grad-panels">
+
+            <!-- ── PANEL L1 ─────────────────────────────── -->
+            <div class="ai-panel" id="panel-l1">
+                <div class="ai-panel-header">
+                    <div class="ai-panel-title">L1 · Body 背景漸層</div>
+                    <div class="ai-panel-badges">
+                        <span class="ai-badge gold">Radial</span>
+                        <span class="ai-badge">circle at center</span>
+                        <span class="ai-badge">background-attachment: fixed</span>
+                    </div>
+                </div>
+
+                <!-- 2D Radial Preview -->
+                <div class="ai-grad-preview" style="background: radial-gradient(circle at center, #9c005d 0%, #1a0512 50%, #0d0209 100%);">
+                    <div class="preview-stop-labels">
+                        <span class="preview-stop-label">0% · #9c005d · rgb(156, 0, 93)</span>
+                        <span class="preview-stop-label end">100% · #0d0209 · rgb(13, 2, 9)</span>
+                    </div>
+                </div>
+
+                <div class="ai-editor">
+                    <div class="ai-axis-labels">
+                        <span>← center (0%)</span>
+                        <span>edge (100%) →</span>
+                    </div>
+
+                    <!-- Gradient bar (no transparency) -->
+                    <div class="ai-grad-bar" id="l1-bar" style="background: linear-gradient(to right, #9c005d 0%, #1a0512 50%, #0d0209 100%);"></div>
+
+                    <!-- Color stops below bar -->
+                    <div class="ai-stops-track" id="l1-stops">
+                        <div class="ai-stop selected" style="left:0%"   data-panel="l1" data-idx="0">
+                            <div class="ai-stop-arrow"></div>
+                            <div class="ai-stop-box" style="background:#9c005d;"></div>
+                        </div>
+                        <div class="ai-stop"          style="left:50%"  data-panel="l1" data-idx="1">
+                            <div class="ai-stop-arrow"></div>
+                            <div class="ai-stop-box" style="background:#1a0512;"></div>
+                        </div>
+                        <div class="ai-stop"          style="left:100%" data-panel="l1" data-idx="2">
+                            <div class="ai-stop-arrow"></div>
+                            <div class="ai-stop-box" style="background:#0d0209;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Ruler -->
+                    <div class="ai-ruler">
+                        <span class="ai-ruler-tick" style="left:0%">0%</span>
+                        <span class="ai-ruler-tick" style="left:25%">25%</span>
+                        <span class="ai-ruler-tick" style="left:50%">50%</span>
+                        <span class="ai-ruler-tick" style="left:75%">75%</span>
+                        <span class="ai-ruler-tick" style="left:100%">100%</span>
+                    </div>
+
+                    <!-- Stop properties -->
+                    <div class="ai-props" id="l1-props">
+                        <div class="ai-props-swatch-wrap">
+                            <div class="ai-props-checker"></div>
+                            <div class="ai-props-swatch-color" id="l1-swatch" style="background:#9c005d;"></div>
+                        </div>
+                        <div class="ai-props-data" id="l1-data">
+                            <div class="prop-k">Name</div><div class="prop-v" id="l1-name">Deep Magenta</div>
+                            <div class="prop-k">Hex</div><div class="prop-v"><span class="hl" id="l1-hex">#9c005d</span></div>
+                            <div class="prop-k">RGB</div><div class="prop-v" id="l1-rgb">rgb(156, 0, 93)</div>
+                            <div class="prop-k">Alpha</div><div class="prop-v" id="l1-alpha">100%</div>
+                            <div class="prop-k">Position</div><div class="prop-v" id="l1-pos">0%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-code-section">
+                    <div class="ai-code-label">CSS</div>
+                    <div class="code-block"><span class="ck">body</span> {
+  <span class="cfn">background</span>: <span class="cfn">radial-gradient</span>(
+    <span class="cs">circle at center</span>,
+    <span class="cs">#9c005d</span>  <span class="cn">0%</span>,   <span class="cm">/* Deep Magenta  rgb(156, 0, 93)  — 圓心 */</span>
+    <span class="cs">#1a0512</span>  <span class="cn">50%</span>,  <span class="cm">/* Midnight Purple rgb(26, 5, 18) — 中繼 */</span>
+    <span class="cs">#0d0209</span>  <span class="cn">100%</span>  <span class="cm">/* Obsidian       rgb(13, 2, 9)   — 邊緣 */</span>
+  );
+  <span class="cfn">background-attachment</span>: <span class="cs">fixed</span>;
+}</div>
+                </div>
+            </div>
+
+            <!-- ── PANEL L3 ─────────────────────────────── -->
+            <div class="ai-panel" id="panel-l3">
+                <div class="ai-panel-header">
+                    <div class="ai-panel-title">L3 · Hero 深度遮罩</div>
+                    <div class="ai-panel-badges">
+                        <span class="ai-badge gold">Radial</span>
+                        <span class="ai-badge">circle at center</span>
+                        <span class="ai-badge">z-index: 1</span>
+                        <span class="ai-badge">含 Alpha 通道</span>
+                    </div>
+                </div>
+
+                <!-- 2D Radial Preview -->
+                <div class="ai-grad-preview" style="background: radial-gradient(circle at center, rgba(156,0,93,0.3) 0%, rgba(156,0,93,0.6) 50%, rgba(13,2,9,0.9) 100%);">
+                    <div class="preview-stop-labels">
+                        <span class="preview-stop-label">0% · rgba(156, 0, 93, 0.3)</span>
+                        <span class="preview-stop-label end">100% · rgba(13, 2, 9, 0.9)</span>
+                    </div>
+                </div>
+
+                <div class="ai-editor">
+                    <div class="ai-axis-labels">
+                        <span>← center (0%)</span>
+                        <span>edge (100%) →</span>
+                    </div>
+
+                    <!-- Opacity track above bar -->
+                    <div class="ai-opacity-track" id="l3-op-track">
+                        <div class="ai-op-stop selected" style="left:0%"   data-panel="l3" data-idx="0">
+                            <div class="ai-op-box" style="opacity:0.3;"></div>
+                            <div class="ai-op-arrow"></div>
+                        </div>
+                        <div class="ai-op-stop" style="left:50%"  data-panel="l3" data-idx="1">
+                            <div class="ai-op-box" style="opacity:0.6;"></div>
+                            <div class="ai-op-arrow"></div>
+                        </div>
+                        <div class="ai-op-stop" style="left:100%" data-panel="l3" data-idx="2">
+                            <div class="ai-op-box" style="opacity:0.9;"></div>
+                            <div class="ai-op-arrow"></div>
+                        </div>
+                    </div>
+
+                    <!-- Gradient bar (with transparency = checkerboard underneath) -->
+                    <div class="ai-grad-bar transparent-bg" id="l3-bar">
+                        <div class="grad-overlay" style="background: linear-gradient(to right, rgba(156,0,93,0.3) 0%, rgba(156,0,93,0.6) 50%, rgba(13,2,9,0.9) 100%);"></div>
+                    </div>
+
+                    <!-- Color stops below bar -->
+                    <div class="ai-stops-track" id="l3-stops">
+                        <div class="ai-stop selected" style="left:0%"   data-panel="l3" data-idx="0">
+                            <div class="ai-stop-arrow"></div>
+                            <div class="ai-stop-box" style="background:#9c005d;"></div>
+                        </div>
+                        <div class="ai-stop" style="left:50%"  data-panel="l3" data-idx="1">
+                            <div class="ai-stop-arrow"></div>
+                            <div class="ai-stop-box" style="background:#9c005d;"></div>
+                        </div>
+                        <div class="ai-stop" style="left:100%" data-panel="l3" data-idx="2">
+                            <div class="ai-stop-arrow"></div>
+                            <div class="ai-stop-box" style="background:#0d0209;"></div>
+                        </div>
+                    </div>
+
+                    <!-- Ruler -->
+                    <div class="ai-ruler">
+                        <span class="ai-ruler-tick" style="left:0%">0%</span>
+                        <span class="ai-ruler-tick" style="left:25%">25%</span>
+                        <span class="ai-ruler-tick" style="left:50%">50%</span>
+                        <span class="ai-ruler-tick" style="left:75%">75%</span>
+                        <span class="ai-ruler-tick" style="left:100%">100%</span>
+                    </div>
+
+                    <!-- Stop properties -->
+                    <div class="ai-props" id="l3-props">
+                        <div class="ai-props-swatch-wrap">
+                            <div class="ai-props-checker"></div>
+                            <div class="ai-props-swatch-color" id="l3-swatch" style="background:rgba(156,0,93,0.3);"></div>
+                        </div>
+                        <div class="ai-props-data" id="l3-data">
+                            <div class="prop-k">Name</div><div class="prop-v" id="l3-name">Deep Magenta (30%)</div>
+                            <div class="prop-k">Hex</div><div class="prop-v"><span class="hl" id="l3-hex">#9c005d</span></div>
+                            <div class="prop-k">RGB</div><div class="prop-v" id="l3-rgb">rgb(156, 0, 93)</div>
+                            <div class="prop-k">Alpha</div><div class="prop-v" id="l3-alpha"><span class="hl">30%</span> · rgba(156, 0, 93, <span class="hl">0.3</span>)</div>
+                            <div class="prop-k">Position</div><div class="prop-v" id="l3-pos">0%</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ai-code-section">
+                    <div class="ai-code-label">CSS</div>
+                    <div class="code-block"><span class="cm">/* Hero &lt;header&gt; 內絕對定位 div — z-index: 1 */</span>
+<span class="cfn">background</span>: <span class="cfn">radial-gradient</span>(
+  <span class="cs">circle at center</span>,
+  <span class="cfn">rgba</span>(<span class="cn">156</span>, <span class="cn">0</span>, <span class="cn">93</span>, <span class="cn">0.3</span>)  <span class="cn">0%</span>,   <span class="cm">/* #9c005d · α 30% — 輕柔光暈 */</span>
+  <span class="cfn">rgba</span>(<span class="cn">156</span>, <span class="cn">0</span>, <span class="cn">93</span>, <span class="cn">0.6</span>)  <span class="cn">50%</span>,  <span class="cm">/* #9c005d · α 60% — 中環加深 */</span>
+  <span class="cfn">rgba</span>(<span class="cn">13</span>,  <span class="cn">2</span>,  <span class="cn">9</span>,  <span class="cn">0.9</span>)  <span class="cn">100%</span>  <span class="cm">/* #0d0209 · α 90% — 接近全黑 */</span>
+);</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  § 4  WAVE ANIMATION SPEC                         -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-label">Canvas Animation</div>
+        <div class="section-title">L2 · Canvas 波紋規格</div>
+        <div class="section-desc">Hero Canvas 使用 60 條動態 sin 波線，以 <code>requestAnimationFrame</code> 驅動，每條線以水平 LinearGradient 著色。</div>
+
+        <div class="spec-grid" style="margin-bottom:32px;">
+            <div class="spec-box">
+                <div class="spec-key">線條數量</div>
+                <div class="spec-val">LINE_COUNT = <span>60</span></div>
+            </div>
+            <div class="spec-box">
+                <div class="spec-key">最大振幅</div>
+                <div class="spec-val">BASE_AMPLITUDE = <span>100px</span></div>
+            </div>
+            <div class="spec-box">
+                <div class="spec-key">空間頻率</div>
+                <div class="spec-val">FREQUENCY = <span>0.0025</span></div>
+            </div>
+            <div class="spec-box">
+                <div class="spec-key">動畫速度</div>
+                <div class="spec-val">WAVE_SPEED = <span>0.0075</span></div>
+            </div>
+            <div class="spec-box">
+                <div class="spec-key">每線相位偏移</div>
+                <div class="spec-val">phaseOffset = index × <span>0.12</span></div>
+            </div>
+            <div class="spec-box">
+                <div class="spec-key">中心線最大 Alpha</div>
+                <div class="spec-val">opacity = <span>0.25</span> - dist × 0.12</div>
+            </div>
+        </div>
+
+        <div class="ai-panel">
+            <div class="ai-panel-header">
+                <div class="ai-panel-title">波紋線條水平漸層</div>
+                <div class="ai-panel-badges">
+                    <span class="ai-badge gold">createLinearGradient</span>
+                    <span class="ai-badge">偶數 / 奇數行左右互換</span>
+                </div>
+            </div>
+            <div class="ai-editor">
+                <div class="ai-axis-labels"><span>← left (0%)</span><span>right (100%) →</span></div>
+                <div class="ai-grad-bar" style="background: linear-gradient(to right, rgba(189,161,108,0.06), rgba(189,161,108,0.25) 30%, rgba(212,184,138,0.25) 70%, rgba(189,161,108,0.06));"></div>
+                <div class="ai-stops-track" style="position:relative;height:30px;margin-top:2px;">
+                    <div class="ai-stop" style="left:0%;cursor:default;">
+                        <div class="ai-stop-arrow"></div>
+                        <div class="ai-stop-box" style="background:#bda16c;opacity:0.3;"></div>
+                    </div>
+                    <div class="ai-stop selected" style="left:30%">
+                        <div class="ai-stop-arrow"></div>
+                        <div class="ai-stop-box" style="background:#bda16c;"></div>
+                    </div>
+                    <div class="ai-stop selected" style="left:70%">
+                        <div class="ai-stop-arrow"></div>
+                        <div class="ai-stop-box" style="background:#d4b88a;"></div>
+                    </div>
+                    <div class="ai-stop" style="left:100%;cursor:default;">
+                        <div class="ai-stop-arrow"></div>
+                        <div class="ai-stop-box" style="background:#bda16c;opacity:0.3;"></div>
+                    </div>
+                </div>
+                <div class="ai-ruler">
+                    <span class="ai-ruler-tick" style="left:0%">0%</span>
+                    <span class="ai-ruler-tick" style="left:30%">30%</span>
+                    <span class="ai-ruler-tick" style="left:70%">70%</span>
+                    <span class="ai-ruler-tick" style="left:100%">100%</span>
+                </div>
+                <div style="margin-top:16px; font-size:13px; color:rgba(255,255,255,0.45); line-height:1.7;">
+                    <strong style="color:rgba(255,255,255,0.65);">Opacity 計算：</strong>
+                    中央線 (index ≈ 30) 最亮（α ≈ 0.25），邊緣最暗（α ≈ 0.13）。<br>
+                    偶數行：<span style="color:#bda16c;">#bda16c</span> → <span style="color:#d4b88a;">#d4b88a</span>；奇數行左右色互換，製造交錯律動。
+                </div>
+            </div>
+            <div class="ai-code-section">
+                <div class="ai-code-label">Canvas JS</div>
+                <div class="code-block"><span class="cm">/* 偶數行 (index % 2 === 0) */</span>
+g.addColorStop(<span class="cn">0.0</span>, `<span class="cfn">rgba</span>(<span class="cn">189</span>, <span class="cn">161</span>, <span class="cn">108</span>, ${opacity * <span class="cn">0.3</span>})`); <span class="cm">/* #bda16c · fade-in  */</span>
+g.addColorStop(<span class="cn">0.3</span>, `<span class="cfn">rgba</span>(<span class="cn">189</span>, <span class="cn">161</span>, <span class="cn">108</span>, ${opacity})`);       <span class="cm">/* #bda16c · solid    */</span>
+g.addColorStop(<span class="cn">0.7</span>, `<span class="cfn">rgba</span>(<span class="cn">212</span>, <span class="cn">184</span>, <span class="cn">138</span>, ${opacity})`);       <span class="cm">/* #d4b88a · higlight */</span>
+g.addColorStop(<span class="cn">1.0</span>, `<span class="cfn">rgba</span>(<span class="cn">189</span>, <span class="cn">161</span>, <span class="cn">108</span>, ${opacity * <span class="cn">0.3</span>})`); <span class="cm">/* #bda16c · fade-out */</span>
+
+<span class="cm">/* 奇數行 — 左右互換 (index % 2 === 1) */</span>
+g.addColorStop(<span class="cn">0.0</span>, `<span class="cfn">rgba</span>(<span class="cn">212</span>, <span class="cn">184</span>, <span class="cn">138</span>, ${opacity * <span class="cn">0.3</span>})`);
+g.addColorStop(<span class="cn">0.3</span>, `<span class="cfn">rgba</span>(<span class="cn">212</span>, <span class="cn">184</span>, <span class="cn">138</span>, ${opacity})`);
+g.addColorStop(<span class="cn">0.7</span>, `<span class="cfn">rgba</span>(<span class="cn">189</span>, <span class="cn">161</span>, <span class="cn">108</span>, ${opacity})`);
+g.addColorStop(<span class="cn">1.0</span>, `<span class="cfn">rgba</span>(<span class="cn">212</span>, <span class="cn">184</span>, <span class="cn">138</span>, ${opacity * <span class="cn">0.3</span>})`);</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  § 5  RENDER PIPELINE                             -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section">
+    <div class="container">
+        <div class="section-label">Render Pipeline</div>
+        <div class="section-title">圖層渲染順序</div>
+        <div class="section-desc">CSS z-index 堆疊由低至高，依序合成出最終畫面。</div>
+
+        <div class="pipeline">
+            <div class="pipe-step">
+                <div class="pipe-left"><div class="pipe-z">z-index: auto</div></div>
+                <div class="pipe-body">
+                    <div class="pipe-title">L1 · Body radial-gradient <span class="pipe-tag">background-attachment: fixed</span></div>
+                    <div class="pipe-desc">全站色彩基底，不隨捲動移動。圓心 Deep Magenta <code>rgb(156,0,93)</code> → Midnight <code>rgb(26,5,18)</code> → 邊 Obsidian <code>rgb(13,2,9)</code>。</div>
+                    <div class="code-block" style="font-size:11px;">radial-gradient(circle at center, #9c005d 0%, #1a0512 50%, #0d0209 100%)</div>
+                </div>
+            </div>
+            <div class="pipe-step">
+                <div class="pipe-left"><div class="pipe-z">z-index: 0</div></div>
+                <div class="pipe-body">
+                    <div class="pipe-title">L2 · Canvas 波紋動畫 <span class="pipe-tag">&lt;canvas&gt; absolute inset-0</span></div>
+                    <div class="pipe-desc">60 條疊加 sin 波，金色系 LinearGradient (<code>rgb(189,161,108)</code> / <code>rgb(212,184,138)</code>)，<code>requestAnimationFrame</code> 驅動，pointer-events: none。</div>
+                    <div class="code-block" style="font-size:11px;">ctx.clearRect(0, 0, w, h);
+for (let i = 0; i &lt; 60; i++) drawWaveLine(i);
+heroTime++; requestAnimationFrame(animateHeroWaves);</div>
+                </div>
+            </div>
+            <div class="pipe-step">
+                <div class="pipe-left"><div class="pipe-z">z-index: 1</div></div>
+                <div class="pipe-body">
+                    <div class="pipe-title">L3 · Hero 深度遮罩 <span class="pipe-tag">div absolute inset-0</span></div>
+                    <div class="pipe-desc">將波紋「壓」回背景，中心 <code>rgba(156,0,93, 0.3)</code> → 中環 <code>0.6</code> → 外圈 <code>rgba(13,2,9, 0.9)</code> 近全黑，形成舞台聚光燈效果。</div>
+                    <div class="code-block" style="font-size:11px;">radial-gradient(circle at center,
+  rgba(156,0,93,.3) 0%, rgba(156,0,93,.6) 50%, rgba(13,2,9,.9) 100%)</div>
+                </div>
+            </div>
+            <div class="pipe-step">
+                <div class="pipe-left"><div class="pipe-z">z-index: 10</div></div>
+                <div class="pipe-body">
+                    <div class="pipe-title">L4 · 主要內容 <span class="pipe-tag">relative z-10</span></div>
+                    <div class="pipe-desc">Logo SVG、副標、主辦單位文字、日期地點 glass-card、向下捲動箭頭。</div>
+                    <div class="code-block" style="font-size:11px;">&lt;div class="relative z-10 w-full px-4 text-center"&gt;
+  &lt;!-- AIPM-logo.svg, 字卡, glass-card ... --&gt;
+&lt;/div&gt;</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════ -->
+<!--  § 6  DESIGN RATIONALE                            -->
+<!-- ═══════════════════════════════════════════════════ -->
+<section class="section" style="border-bottom:none;">
+    <div class="container">
+        <div class="section-label">Design Rationale</div>
+        <div class="section-title">色彩設計邏輯</div>
+        <div class="section-desc">三個視覺目標如何對應到色彩選擇。</div>
+        <div class="spec-grid" style="grid-template-columns:1fr 1fr 1fr;">
+            <div class="spec-box">
+                <div class="spec-key" style="color:var(--gold);">高端感 · Prestige</div>
+                <div style="margin-top:8px;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">近黑 Obsidian 為底，搭配克制的 Prestige Gold 作為 accent，避免飽和亮色造成廉價感。</div>
+            </div>
+            <div class="spec-box">
+                <div class="spec-key" style="color:var(--gold);">科技感 · Tech</div>
+                <div style="margin-top:8px;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">動態 Canvas 波紋以金色系呈現，取代常見的藍色網格，在科技感中保有品牌獨特性。</div>
+            </div>
+            <div class="spec-box">
+                <div class="spec-key" style="color:var(--gold);">聚焦感 · Focus</div>
+                <div style="margin-top:8px;font-size:13px;color:rgba(255,255,255,0.6);line-height:1.7;">雙層 radial-gradient 都以畫面中心為圓心，刻意讓四角壓暗，視線導向中央內容。</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── Scripts ──────────────────────────────────────── -->
+<script>
+    /* ─── Layer Toggle ────────────────────────────── */
+    document.querySelectorAll('.layer-toggle').forEach(toggle => {
+        toggle.addEventListener('click', () => {
+            const el = document.getElementById(toggle.dataset.target);
+            if (!el) return;
+            const nowActive = toggle.classList.toggle('active');
+            el.style.opacity = nowActive ? '' : '0';
+        });
+    });
+
+    /* ─── Gradient Stop Selection ─────────────────── */
+    const stopData = {
+        l1: [
+            { name: 'Deep Magenta',   hex: '#9c005d', rgb: 'rgb(156, 0, 93)',  alpha: '100%',                              alphaFull: 'rgba(156, 0, 93, 1.0)', color: '#9c005d',            pos: '0%'   },
+            { name: 'Midnight Purple',hex: '#1a0512', rgb: 'rgb(26, 5, 18)',   alpha: '100%',                              alphaFull: 'rgba(26, 5, 18, 1.0)',  color: '#1a0512',            pos: '50%'  },
+            { name: 'Obsidian',       hex: '#0d0209', rgb: 'rgb(13, 2, 9)',    alpha: '100%',                              alphaFull: 'rgba(13, 2, 9, 1.0)',   color: '#0d0209',            pos: '100%' },
+        ],
+        l3: [
+            { name: 'Deep Magenta (30%)', hex: '#9c005d', rgb: 'rgb(156, 0, 93)', alpha: '<span class="hl">30%</span>', alphaFull: 'rgba(156, 0, 93, <span class="hl">0.3</span>)', color: 'rgba(156,0,93,0.3)', pos: '0%'   },
+            { name: 'Deep Magenta (60%)', hex: '#9c005d', rgb: 'rgb(156, 0, 93)', alpha: '<span class="hl">60%</span>', alphaFull: 'rgba(156, 0, 93, <span class="hl">0.6</span>)', color: 'rgba(156,0,93,0.6)', pos: '50%'  },
+            { name: 'Obsidian (90%)',     hex: '#0d0209', rgb: 'rgb(13, 2, 9)',   alpha: '<span class="hl">90%</span>', alphaFull: 'rgba(13, 2, 9, <span class="hl">0.9</span>)',   color: 'rgba(13,2,9,0.9)',   pos: '100%' },
+        ]
+    };
+
+    function selectStop(panel, idx) {
+        // Deselect all stops in this panel
+        document.querySelectorAll(`#panel-${panel} .ai-stop`).forEach(s => s.classList.remove('selected'));
+        document.querySelectorAll(`#panel-${panel} .ai-op-stop`).forEach(s => s.classList.remove('selected'));
+
+        // Select clicked ones (by index, sync color + opacity)
+        document.querySelectorAll(`#panel-${panel} .ai-stop[data-idx="${idx}"]`).forEach(s => s.classList.add('selected'));
+        document.querySelectorAll(`#panel-${panel} .ai-op-stop[data-idx="${idx}"]`).forEach(s => s.classList.add('selected'));
+
+        // Update properties panel
+        const d = stopData[panel][idx];
+        document.getElementById(`${panel}-swatch`).style.background = d.color;
+        document.getElementById(`${panel}-name`).textContent   = d.name;
+        document.getElementById(`${panel}-hex`).textContent    = d.hex;
+        document.getElementById(`${panel}-rgb`).textContent    = d.rgb;
+        document.getElementById(`${panel}-pos`).textContent    = d.pos;
+
+        // Alpha field — may contain HTML spans
+        const alphaEl = document.getElementById(`${panel}-alpha`);
+        if (d.alphaFull.includes('<')) {
+            alphaEl.innerHTML = d.alpha + ' · ' + d.alphaFull;
+        } else {
+            alphaEl.textContent = d.alpha;
+        }
+    }
+
+    // Bind all stop clicks
+    document.querySelectorAll('.ai-stop[data-panel], .ai-op-stop[data-panel]').forEach(stop => {
+        stop.addEventListener('click', () => {
+            selectStop(stop.dataset.panel, parseInt(stop.dataset.idx, 10));
+        });
+    });
+
+    /* ─── Hero Canvas Wave Preview ────────────────── */
+    (function () {
+        const canvas = document.getElementById('hero-canvas-preview');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let w, h, time = 0;
+        const LINE_COUNT = 60, BASE_AMP = 60, FREQUENCY = 0.0025, WAVE_SPEED = 0.0075;
+
+        function resize() {
+            w = canvas.width  = canvas.offsetWidth;
+            h = canvas.height = canvas.offsetHeight;
+        }
+
+        function drawLine(index) {
+            const phase   = index * 0.12;
+            const spacing = h / (LINE_COUNT + 1);
+            const baseY   = spacing * (index + 1);
+
+            ctx.beginPath();
+            for (let x = 0; x <= w; x += 2) {
+                const y = baseY
+                    + Math.sin(x * FREQUENCY + time * WAVE_SPEED + phase) * BASE_AMP
+                    + Math.sin(x * FREQUENCY * 2.1 + time * WAVE_SPEED * 0.7 + phase * 1.3) * BASE_AMP * 0.3
+                    + Math.sin(x * FREQUENCY * 0.5 + time * WAVE_SPEED * 1.2 - phase * 0.5) * BASE_AMP * 0.2;
+                x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+            }
+
+            const dist = Math.abs(index - LINE_COUNT / 2) / (LINE_COUNT / 2);
+            const op   = 0.25 - dist * 0.12;
+            const g    = ctx.createLinearGradient(0, 0, w, 0);
+
+            if (index % 2 === 0) {
+                g.addColorStop(0,   `rgba(189,161,108,${op * 0.3})`);
+                g.addColorStop(0.3, `rgba(189,161,108,${op})`);
+                g.addColorStop(0.7, `rgba(212,184,138,${op})`);
+                g.addColorStop(1,   `rgba(189,161,108,${op * 0.3})`);
+            } else {
+                g.addColorStop(0,   `rgba(212,184,138,${op * 0.3})`);
+                g.addColorStop(0.3, `rgba(212,184,138,${op})`);
+                g.addColorStop(0.7, `rgba(189,161,108,${op})`);
+                g.addColorStop(1,   `rgba(212,184,138,${op * 0.3})`);
+            }
+
+            ctx.strokeStyle = g;
+            ctx.lineWidth   = 1;
+            ctx.stroke();
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, w, h);
+            for (let i = 0; i < LINE_COUNT; i++) drawLine(i);
+            time++;
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', resize);
+        setTimeout(() => { resize(); animate(); }, 50);
+    })();
+</script>
+</body>
+</html>
