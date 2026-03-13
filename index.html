@@ -938,7 +938,7 @@
             <div class="text-center fade-up">
                 <p class="text-xl text-body mb-8 max-w-2xl mx-auto">8 週密集培訓，從 Prompt Engineering 到 Vibe Coding，<br class="hidden md:inline">成為 AI 時代的全方位產品經理。</p>
                 <a id="reg-cta-btn" href="https://aiacademy.tw/admission-aipm-tp2/" target="_blank" onclick="gtag('event', 'click_registration', {'event_category': 'engagement', 'event_label': 'section_cta'});" class="inline-block bg-prestigeGold hover:bg-prestigeGoldHover text-obsidian font-bold text-xl px-12 py-4 rounded-sm tracking-widest uppercase transition-all duration-300 shadow-[0_0_20px_rgba(189,161,108,0.4)] hover:shadow-[0_0_40px_rgba(189,161,108,0.6)]">
-                    報名簡章
+                    台北班報名簡章
                 </a>
             </div>
 
@@ -1196,13 +1196,15 @@
                 date: '2026.04.11 – 05.30<br>每週六 09:00 - 17:00 | 共 8 週 48 小時',
                 venue: '<a href="https://www.google.com/url?q=https://maps.app.goo.gl/zmSmGLUwjrbcsm7C8&sa=D&source=editors&ust=1772792078640069&usg=AOvVaw1il0cJ9iH65fSKb8B9HJry" target="_blank" class="hover:text-prestigeGold transition-colors">新光新板傑仕堡園區 | 國際會議廳</a>',
                 address: '<a href="https://www.google.com/url?q=https://maps.app.goo.gl/zmSmGLUwjrbcsm7C8&sa=D&source=editors&ust=1772792078640069&usg=AOvVaw1il0cJ9iH65fSKb8B9HJry" target="_blank" class="hover:text-prestigeGold transition-colors">新北市板橋區文化路一段 188 巷 51 號 A 棟 2 樓</a>',
-                cta: 'https://aiacademy.tw/admission-aipm-tp2/'
+                cta: 'https://aiacademy.tw/admission-aipm-tp2/',
+                label: '台北班報名簡章'
             },
             taichung: {
                 date: '2026.10.02 – 11.27<br>每週六 09:00 - 17:00 | 共 8 週 48 小時',
                 venue: '台灣人工智慧學校 台中分校',
                 address: '台中市北屯區經貿路一段296號 基中大樓 2 樓',
-                cta: 'https://aiacademy.tw/admission-aipm-tc1/'
+                cta: 'https://aiacademy.tw/admission-aipm-tc1/',
+                label: '台中班報名簡章'
             }
         };
 
@@ -1212,6 +1214,7 @@
             document.getElementById('reg-venue').innerHTML = s.venue;
             document.getElementById('reg-address').innerHTML = s.address;
             document.getElementById('reg-cta-btn').href = s.cta;
+            document.getElementById('reg-cta-btn').textContent = s.label;
 
             // Update tab styles
             const activeClass = ['bg-prestigeGold', 'text-obsidian'];
