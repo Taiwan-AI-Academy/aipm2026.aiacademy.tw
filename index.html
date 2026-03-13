@@ -131,48 +131,88 @@
             width: 80%;
         }
 
-        /* Floating CTA Button */
-        .floating-cta {
+        /* Floating CTA */
+        .floating-cta-wrapper {
             position: fixed;
             right: 0;
             top: 50%;
             transform: translateY(-50%);
             z-index: 40;
-            writing-mode: vertical-rl;
-            text-orientation: mixed;
+            display: flex;
+            align-items: stretch;
             background: rgba(40, 5, 25, 0.7);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border: 1px solid rgba(189, 161, 108, 0.3);
             border-right: none;
             border-radius: 8px 0 0 8px;
+            opacity: 0.75;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            transition: opacity 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+        }
+
+        .floating-cta-wrapper:hover {
+            opacity: 1;
+            background: rgba(40, 5, 25, 0.9);
+            border-color: rgba(189, 161, 108, 0.6);
+            box-shadow: -4px 0 20px rgba(189, 161, 108, 0.2);
+        }
+
+        .floating-cta-panel {
+            width: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transition: width 0.3s ease;
+        }
+
+        .floating-cta-wrapper:hover .floating-cta-panel {
+            width: 152px;
+        }
+
+        .floating-cta-item {
+            display: block;
+            padding: 14px 18px;
+            color: #bda16c;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .floating-cta-item:first-child {
+            border-bottom: 1px solid rgba(189, 161, 108, 0.2);
+        }
+
+        .floating-cta-item:hover {
+            background: rgba(189, 161, 108, 0.15);
+            color: #d4b87a;
+        }
+
+        .floating-cta-tab {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
             padding: 20px 12px;
             color: #bda16c;
             font-size: 13px;
             font-weight: 600;
             letter-spacing: 0.2em;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            opacity: 0.75;
-            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
-            text-decoration: none;
             white-space: nowrap;
+            user-select: none;
+            border-left: 1px solid rgba(189, 161, 108, 0);
+            transition: border-color 0.3s ease;
         }
 
-        .floating-cta:hover {
-            opacity: 1;
-            background: rgba(40, 5, 25, 0.9);
-            border-color: rgba(189, 161, 108, 0.6);
-            padding-right: 14px;
-            box-shadow: -4px 0 20px rgba(189, 161, 108, 0.2);
-        }
-
-        .floating-cta:active {
-            transform: translateY(-50%) scale(0.95);
+        .floating-cta-wrapper:hover .floating-cta-tab {
+            border-left-color: rgba(189, 161, 108, 0.3);
         }
 
         @media (max-width: 768px) {
-            .floating-cta { display: none; }
+            .floating-cta-wrapper { display: none; }
         }
 
         /* Text Color Utilities — Gold & White Only (no gray) */
@@ -253,10 +293,17 @@
                             <a href="#register" class="hover:text-prestigeGold transition-colors text-sm xl:text-base tracking-wider uppercase">報名資訊</a>
                         </div>
                     </div>
-                    <div class="hidden md:block">
-                        <a href="https://aiacademy.tw/admission-aipm-1/" target="_blank" class="bg-transparent border border-prestigeGold text-prestigeGold hover:bg-prestigeGold hover:text-obsidian px-6 py-2 rounded-sm text-base font-semibold transition-all duration-300 uppercase tracking-widest">
-                            報名簡章
-                        </a>
+                    <div class="hidden md:block relative group">
+                        <button class="bg-transparent border border-prestigeGold text-prestigeGold group-hover:bg-prestigeGold group-hover:text-obsidian px-6 py-2 rounded-sm text-base font-semibold transition-all duration-300 uppercase tracking-widest flex items-center gap-2 cursor-default">
+                            報名簡章 <i class="fa-solid fa-chevron-down text-xs transition-transform duration-300 group-hover:rotate-180"></i>
+                        </button>
+                        <div class="absolute right-0 top-full pt-1 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                            <div class="bg-obsidian/95 border border-prestigeGold/30 rounded-sm min-w-max py-1" style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);">
+                                <a href="https://aiacademy.tw/admission-aipm-tp2/" target="_blank" class="block px-5 py-2.5 text-sm text-prestigeGold hover:bg-white/5 transition-colors whitespace-nowrap">台北班報名簡章</a>
+                                <div class="border-t border-white/10 mx-3"></div>
+                                <a href="https://aiacademy.tw/admission-aipm-tc1/" target="_blank" class="block px-5 py-2.5 text-sm text-prestigeGold hover:bg-white/5 transition-colors whitespace-nowrap">台中班報名簡章</a>
+                            </div>
+                        </div>
                     </div>
                     <!-- Mobile menu button -->
                     <button type="button" class="lg:hidden text-label hover:text-white focus:outline-none" id="mobile-menu-button">
@@ -274,6 +321,8 @@
                 <a href="#benefits" class="block px-3 py-2 text-base font-medium text-white hover:text-prestigeGold hover:bg-white/5 rounded-md">課程效益</a>
                 <a href="#schedule" class="block px-3 py-2 text-base font-medium text-white hover:text-prestigeGold hover:bg-white/5 rounded-md">課程表</a>
                 <a href="#register" class="block px-3 py-2 text-base font-bold text-prestigeGold hover:bg-white/5 rounded-md">報名資訊</a>
+                <a href="https://aiacademy.tw/admission-aipm-tp2/" target="_blank" class="block px-3 py-2 pl-6 text-sm font-medium text-prestigeGold/80 hover:text-prestigeGold hover:bg-white/5 rounded-md">↳ 台北班報名簡章</a>
+                <a href="https://aiacademy.tw/admission-aipm-tc1/" target="_blank" class="block px-3 py-2 pl-6 text-sm font-medium text-prestigeGold/80 hover:text-prestigeGold hover:bg-white/5 rounded-md">↳ 台中班報名簡章</a>
             </div>
         </div>
     </nav>
@@ -888,7 +937,7 @@
             <!-- CTA -->
             <div class="text-center fade-up">
                 <p class="text-xl text-body mb-8 max-w-2xl mx-auto">8 週密集培訓，從 Prompt Engineering 到 Vibe Coding，<br class="hidden md:inline">成為 AI 時代的全方位產品經理。</p>
-                <a id="reg-cta-btn" href="https://aiacademy.tw/admission-aipm-1/" target="_blank" onclick="gtag('event', 'click_registration', {'event_category': 'engagement', 'event_label': 'section_cta'});" class="inline-block bg-prestigeGold hover:bg-prestigeGoldHover text-obsidian font-bold text-xl px-12 py-4 rounded-sm tracking-widest uppercase transition-all duration-300 shadow-[0_0_20px_rgba(189,161,108,0.4)] hover:shadow-[0_0_40px_rgba(189,161,108,0.6)]">
+                <a id="reg-cta-btn" href="https://aiacademy.tw/admission-aipm-tp2/" target="_blank" onclick="gtag('event', 'click_registration', {'event_category': 'engagement', 'event_label': 'section_cta'});" class="inline-block bg-prestigeGold hover:bg-prestigeGoldHover text-obsidian font-bold text-xl px-12 py-4 rounded-sm tracking-widest uppercase transition-all duration-300 shadow-[0_0_20px_rgba(189,161,108,0.4)] hover:shadow-[0_0_40px_rgba(189,161,108,0.6)]">
                     報名簡章
                 </a>
             </div>
@@ -897,9 +946,13 @@
     </section>
 
     <!-- Floating CTA Button -->
-    <a href="https://aiacademy.tw/admission-aipm-1/" target="_blank" class="floating-cta" aria-label="報名簡章">
-        報名簡章
-    </a>
+    <div class="floating-cta-wrapper" aria-label="報名簡章">
+        <div class="floating-cta-panel">
+            <a href="https://aiacademy.tw/admission-aipm-tp2/" target="_blank" class="floating-cta-item">台北班報名簡章</a>
+            <a href="https://aiacademy.tw/admission-aipm-tc1/" target="_blank" class="floating-cta-item">台中班報名簡章</a>
+        </div>
+        <div class="floating-cta-tab">報名簡章</div>
+    </div>
 
     <!-- Footer -->
     <footer class="bg-black py-12 border-t border-white/10">
@@ -1143,13 +1196,13 @@
                 date: '2026.04.11 – 05.30<br>每週六 09:00 - 17:00 | 共 8 週 48 小時',
                 venue: '<a href="https://www.google.com/url?q=https://maps.app.goo.gl/zmSmGLUwjrbcsm7C8&sa=D&source=editors&ust=1772792078640069&usg=AOvVaw1il0cJ9iH65fSKb8B9HJry" target="_blank" class="hover:text-prestigeGold transition-colors">新光新板傑仕堡園區 | 國際會議廳</a>',
                 address: '<a href="https://www.google.com/url?q=https://maps.app.goo.gl/zmSmGLUwjrbcsm7C8&sa=D&source=editors&ust=1772792078640069&usg=AOvVaw1il0cJ9iH65fSKb8B9HJry" target="_blank" class="hover:text-prestigeGold transition-colors">新北市板橋區文化路一段 188 巷 51 號 A 棟 2 樓</a>',
-                cta: 'https://aiacademy.tw/admission-aipm-1/'
+                cta: 'https://aiacademy.tw/admission-aipm-tp2/'
             },
             taichung: {
                 date: '2026.10.02 – 11.27<br>每週六 09:00 - 17:00 | 共 8 週 48 小時',
                 venue: '台灣人工智慧學校 台中分校',
                 address: '台中市北屯區經貿路一段296號 基中大樓 2 樓',
-                cta: 'https://aiacademy.tw/admission-aipm-1/'
+                cta: 'https://aiacademy.tw/admission-aipm-tc1/'
             }
         };
 
