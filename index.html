@@ -672,8 +672,8 @@
             <!-- Session Tabs -->
             <div class="flex justify-center mb-12 fade-up px-4">
                 <div class="flex flex-wrap justify-center gap-1 bg-white/5 rounded-lg p-1">
-                    <button
-                        class="px-3 sm:px-6 py-2 rounded-md text-sm sm:text-base font-bold whitespace-nowrap transition-all duration-200 bg-prestigeGold text-obsidian">
+                    <button type="button" data-session-tab="tp1"
+                        class="session-tab px-3 sm:px-6 py-2 rounded-md text-sm sm:text-base font-bold whitespace-nowrap transition-all duration-200 bg-prestigeGold text-obsidian">
                         台北1期
                     </button>
                     <button disabled
@@ -684,14 +684,15 @@
                         class="px-3 sm:px-6 py-2 rounded-md text-sm sm:text-base font-bold whitespace-nowrap transition-all duration-200 text-white/30 cursor-not-allowed">
                         台北3期
                     </button>
-                    <button disabled
-                        class="px-3 sm:px-6 py-2 rounded-md text-sm sm:text-base font-bold whitespace-nowrap transition-all duration-200 text-white/30 cursor-not-allowed">
+                    <button type="button" data-session-tab="tc1"
+                        class="session-tab px-3 sm:px-6 py-2 rounded-md text-sm sm:text-base font-bold whitespace-nowrap transition-all duration-200 text-white/70 hover:text-white hover:bg-white/10">
                         台中1期
                     </button>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- 台北1期 -->
+            <div data-session-panel="tp1" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
                 <!-- 曾思遠 -->
                 <div class="glass-card glass-card-hover rounded-lg overflow-hidden fade-up flex flex-col md:min-h-[440px]">
@@ -798,6 +799,134 @@
                         <p class="text-prestigeGold text-sm mb-4">財團法人台灣人工智慧學校基金會 執行長<br>中央研究院資訊科學所 研究員<br>中央研究院資訊服務處 處長</p>
                         <div class="text-body text-sm leading-relaxed">
                             <p>以研究視角剖析 AI 時代 PM 的關鍵思維。</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- 台中1期 -->
+            <div data-session-panel="tc1" style="display: none;" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                <!-- 曾思遠 -->
+                <div class="glass-card glass-card-hover rounded-lg overflow-hidden fade-up flex flex-col md:min-h-[440px]">
+                    <div class="relative h-72 overflow-hidden bg-deepBlue">
+                        <img src="assets/instructors/tseng-siyuan.jpg" alt="曾思遠" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <h4 class="text-white text-xl font-bold mb-1">曾思遠　實作導師</h4>
+                        <p class="text-prestigeGold text-sm mb-4">Nautilus AI CEO ／ AIA AI PM 講師</p>
+                        <div class="text-body text-sm space-y-3 leading-relaxed">
+                            <div>
+                                <div class="text-label text-xs uppercase tracking-wider mb-1">經歷</div>
+                                <ul class="space-y-1 list-none">
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>現任 Nautilus AI CEO、AIA AI PM 講師</li>
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>前線上學習平台創辦人、金融科技軟體企業策略長</li>
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>曾任 AI 數據科學家</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="text-label text-xs uppercase tracking-wider mb-1">專長</div>
+                                <p>產品規劃、專案管理、前後端程式、演算法設計、AI 模型建立、Web3 區塊鏈</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 簡光正 -->
+                <div class="glass-card glass-card-hover rounded-lg overflow-hidden fade-up flex flex-col md:min-h-[440px]">
+                    <div class="relative h-72 overflow-hidden bg-deepBlue">
+                        <img src="assets/instructors/jian-guangzheng.jpg" alt="簡光正" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <div class="text-label text-xs uppercase tracking-wider mb-2">開學演講</div>
+                        <h4 class="text-white text-xl font-bold mb-1">簡光正<br>從點到線到面：AI 時代，PM 如何推動組織的 AI 落地與擴散</h4>
+                        <p class="text-prestigeGold text-sm mb-4">AI 與數位轉型顧問</p>
+                        <div class="text-body text-sm space-y-3 leading-relaxed">
+                            <div>
+                                <div class="text-label text-xs uppercase tracking-wider mb-1">經歷</div>
+                                <ul class="space-y-1 list-none">
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>曾任鉅鋼機械資訊長，主持公司數位與 AI 轉型</li>
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>推動流程 e 化、敏捷文化導入、全員生成式 AI 賦能</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="text-label text-xs uppercase tracking-wider mb-1">獎項</div>
+                                <ul class="space-y-1 list-none">
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>2022《哈佛商業評論》數位轉型鼎革獎（製造業精銳獎－楷模獎）</li>
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>2024 TAIA AI Award – Best Speaker</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="text-label text-xs uppercase tracking-wider mb-1">專長</div>
+                                <p>生成式 AI 應用、數位及 AI 轉型、數位系統整合、資訊系統營運管理、敏捷管理、OT 資安</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 李國財 -->
+                <div class="glass-card glass-card-hover rounded-lg overflow-hidden fade-up flex flex-col md:min-h-[440px]">
+                    <div class="relative h-72 overflow-hidden bg-deepBlue">
+                        <img src="assets/instructors/li-guocai.jpg" alt="李國財" class="w-full h-full object-cover" style="transform: scale(2.1); transform-origin: 0 16%;">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <div class="text-label text-xs uppercase tracking-wider mb-2">專題演講</div>
+                        <h4 class="text-white text-xl font-bold mb-1">李國財<br>從 AI-Enable 到 AI-Native：虛擬員工上場前，企業該準備的事</h4>
+                        <p class="text-prestigeGold text-sm mb-4">FIKAYARD 共同創辦人</p>
+                        <div class="text-body text-sm space-y-3 leading-relaxed">
+                            <div>
+                                <div class="text-label text-xs uppercase tracking-wider mb-1">現職</div>
+                                <ul class="space-y-1 list-none">
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>共同創辦 Fikayard、Dcare+ 與久泰智聯</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <div class="text-label text-xs uppercase tracking-wider mb-1">經歷</div>
+                                <ul class="space-y-1 list-none">
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>阿里雲物聯網平台負責人</li>
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>聯想物聯網架構師</li>
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>思科／Gemtek 研發軟體／測試工程師</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 林鼎皓 -->
+                <div class="glass-card glass-card-hover rounded-lg overflow-hidden fade-up flex flex-col md:min-h-[440px]">
+                    <div class="relative h-72 overflow-hidden bg-deepBlue">
+                        <img src="assets/instructors/lin-dinghao.jpg" alt="林鼎皓" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <div class="text-label text-xs uppercase tracking-wider mb-2">短講</div>
+                        <h4 class="text-white text-xl font-bold mb-1">林鼎皓<br>AI 員工入職服務 × 2026 年七個落地現場</h4>
+                        <p class="text-prestigeGold text-sm mb-4">網聯科技 執行長</p>
+                        <div class="text-body text-sm leading-relaxed">
+                            <p>網聯科技共同創辦人暨執行長，成功大學製造工程碩士。出身運搬機械業家族，接班期間營收成長五倍；2018 年創立網聯科技，聯合 50 多家廠商推動 TANGRAM 工業物聯網品牌與設備即服務新商模。近年專注 AI 數位勞動力導入，在製造、醫療、住宅科技、法人協會等領域打造多個正在運行的 AI Agent 應用，並擔任大人物大創新董事長、台灣智慧自動化與機器人協會理監事。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 陳慶倫 -->
+                <div class="glass-card glass-card-hover rounded-lg overflow-hidden fade-up flex flex-col md:min-h-[440px]">
+                    <div class="relative h-72 overflow-hidden bg-deepBlue">
+                        <img src="assets/instructors/chen-qinglun.jpg" alt="陳慶倫" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-5 flex-1 flex flex-col">
+                        <div class="text-label text-xs uppercase tracking-wider mb-2">短講</div>
+                        <h4 class="text-white text-xl font-bold mb-1">陳慶倫<br>從怕麻煩開始：一位製造業二代的 AI 實作經驗</h4>
+                        <p class="text-prestigeGold text-sm mb-4">義晟工業 特助</p>
+                        <div class="text-body text-sm space-y-3 leading-relaxed">
+                            <p>義晟工業二代管理者，中原大學工業工程研究所背景，長期投入鋁合金鍛造與製造業數位轉型，結合精實思維與數位工具，推動企業邁向智慧製造。</p>
+                            <div>
+                                <div class="text-label text-xs uppercase tracking-wider mb-1">實戰經歷</div>
+                                <ul class="space-y-1 list-none">
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>ERP 導入與 EIP／QMS／MES／IoT 系統整合</li>
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>SMB 智慧機上盒、SMU 智慧加值等智慧製造計畫</li>
+                                    <li><i class="fa-solid fa-angle-right text-prestigeGold mr-2"></i>AI Coding、AI Agent 與流程自動化應用</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1142,6 +1271,23 @@
         }, { threshold: 0.1 });
 
         document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+        // Keynote session tabs
+        const sessionTabs = document.querySelectorAll('.session-tab');
+        sessionTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                const session = tab.dataset.sessionTab;
+                sessionTabs.forEach(t => {
+                    const active = t === tab;
+                    t.classList.toggle('bg-prestigeGold', active);
+                    t.classList.toggle('text-obsidian', active);
+                    ['text-white/70', 'hover:text-white', 'hover:bg-white/10'].forEach(c => t.classList.toggle(c, !active));
+                });
+                document.querySelectorAll('[data-session-panel]').forEach(panel => {
+                    panel.style.display = panel.dataset.sessionPanel === session ? '' : 'none';
+                });
+            });
+        });
 
         // Navbar scroll effect — always transparent with backdrop blur
         window.addEventListener('scroll', () => {
